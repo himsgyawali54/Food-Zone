@@ -1,0 +1,119 @@
+{
+    "foodItems": [
+      {
+        "id": 1,
+        "name": "Classic Pancakes",
+        "category": "Breakfast",
+        "price": 40,
+        "description": "Fluffy pancakes served with maple syrup and butter.",
+        "image":"img/pancakes.jpg"
+      },
+      {
+        "id": 2,
+        "name": "Chicken Avocado Wrap",
+        "category": "Lunch",
+        "price": 250,
+        "description": "Grilled chicken and fresh avocado wrapped in a tortilla.",
+        "image":"img/avocado.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Roti and Vegetable set",
+        "category": "Dinner",
+        "price": 150,
+        "description": "A vegetarian dinner typically includes a variety of vegetable-based dishes.",
+        "image":"img/roti.jpg"
+      },
+      {
+        "id": 4,
+        "name": "Spaghetti Bolognese",
+        "category": "Dinner",
+        "price": 300,
+        "description": "Spaghetti with savory meat sauce.",
+        "image":"img/spaghetti.jpg"
+      },
+      {
+        "id": 5,
+        "name": "Bread Jam",
+        "category": "Breakfast",
+        "price": 50,
+        "description": "Fresh bread with a mix of seasonal fruits's jam.",
+        "image":"img/bread.jpg"
+      },
+      {
+        "id": 6,
+        "name": "Egg and Cheese Breakfast Sandwich",
+        "category": "Breakfast",
+        "price": 60,
+        "description": "Scrambled eggs and melted cheese on a toasted bun.",
+        "image":"img/egg-cheese.jpg"
+      },
+      {
+        "id": 7,
+        "name": "Rajma Chawal",
+        "category": "Lunch",
+        "price": 220,
+        "description": "North Indian curried dish made with kidney beans, onions, tomatoes, plenty of spices and herbs.",
+        "image":"img/rajmachawal.jpg"
+      },
+      {
+        "id": 8,
+        "name": "Biryani",
+        "category": "Lunch",
+        "price": 350,
+        "description": "Mixed rice dish  with some type of meat and spices.",
+        "image":"img/biryani.jpg"
+      },
+      {
+        "id": 9,
+        "name": "Grilled Salmon",
+        "category": "Dinner",
+        "price": 180,
+        "description": "Grilled salmon fillet with lemon and herbs.",
+        "image":"img/grilled-salmon.jpg"
+      },
+      {
+        "id": 10,
+        "name": "Blueberry Muffins",
+        "category": "Breakfast",
+        "price": 75,
+        "description": "Homemade blueberry muffins, perfect for breakfast.",
+        "image":"img/blueberry-muffins.jpg"
+      },
+      {
+        "id": 11,
+        "name": "Thakali Set",
+        "category": "Lunch",
+        "price": 600,
+        "description": "Thakali meal consists of locally grown buckwheat, barley, millet, rice, maize and dal.",
+        "image":"img/thakaliset.jpg"
+      },
+      {
+        "id": 12,
+        "name": "Nepali Veg Khana",
+        "category": "Dinner",
+        "price": 370,
+        "description": "Plain rice with dal , tomato pickle,and  mixed vegetables.",
+        "image":"img/nepalikhana.jpg"
+      },
+      {
+        "id": 13,
+        "name": "Mixed vegetable Curry",
+        "category": "Dinner",
+        "price": 230,
+        "description": "Mixed frozen vegetables, garnish with chopped fresh coriander.",
+        "image":"img/curry.jpg"
+      },
+      {
+        "id": 14,
+        "name": "Avocado Toast",
+        "category": "Breakfast",
+        "price": 90,
+        "description": "Sliced avocado on toasted whole-grain bread.",
+        "image":"img/avocado-toast.jpg"
+      }
+
+      
+    ]
+  }
+  

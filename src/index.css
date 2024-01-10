@@ -1,0 +1,62 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  ::placeholder {
+    @apply px-3 py-2;
+  }
+  .menus button {
+    @apply bg-orange-900 px-3 py-1 rounded;
+  }
+  .pop {
+    animation: popout 1s ease;
+    -webkit-animation: popout 1s ease;
+  }
+  @keyframes popout {
+    from {
+      transform: scale(0);
+    }
+    80% {
+      transform: scale(1.2);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  @-webkit-keyframes popout {
+    from {
+      -webkit-transform: scale(0);
+    }
+    80% {
+      -webkit-transform: scale(1.2);
+    }
+    to {
+      -webkit-transform: scale(1);
+    }
+  }
+  svg {
+    -webkit-animation: mover 1s infinite alternate;
+    animation: mover 1s infinite alternate;
+  }
+  svg {
+    -webkit-animation: mover 1s infinite alternate;
+    animation: mover 1s infinite alternate;
+  }
+  @-webkit-keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-15px);
+    }
+  }
+  @keyframes mover {
+    0% {
+      transform: translateY(0);
+    }
+    100% {
+      transform: translateY(-15px);
+    }
+  }
+}
