@@ -16,11 +16,6 @@ const ItemsList = () => {
       <div className="container">
         {showAll ? (
           <div className="grid md:grid-cols-2 my-10 gap-9">
-            {resfound && (
-              <div>
-                <h3>Opps Not found</h3>
-              </div>
-            )}
             {dataitems.map((items) => (
               <div
                 className="card border-solid border p-5 shadow"
