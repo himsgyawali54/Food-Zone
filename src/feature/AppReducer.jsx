@@ -16,4 +16,4 @@ const foodItemsSlice = createSlice({
 });
 export const { setFoodItems } = foodItemsSlice.actions;
 
-export default foodItemsSlice.reducer;
+export default foodItemsSlice.reducer; 
