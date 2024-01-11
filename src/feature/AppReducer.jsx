@@ -1,8 +1,9 @@
 import React from "react";
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 const initialState = {
   FoodItems: [],
 };
+const foodItemsDetails = createAsyncThunk();
 
 const foodItemsSlice = createSlice({
   name: "foodItems",

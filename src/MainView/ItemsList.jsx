@@ -1,12 +1,13 @@
 import React, { useEffect, useContext } from "react";
 import axios from "axios";
 import { ContextApp } from "../context/ContextApi";
+import { setFoodItems } from "../feature/AppReducer";
+import { useDispatch } from "react-redux";
 const ItemsList = () => {
-  const { setUserData, showAll, dataitems, setDataItems, resfound } =
-    useContext(ContextApp);
+  const { showAll, dataitems, setDataItems, resfound } = useContext(ContextApp);
   useEffect(() => {
     axios.get("http://localhost:3031/foodItems").then((response) => {
-      setUserData(response.data);
+      dispatch(setFoodItems(response.data));
       setDataItems(response.data);
     });
   }, []);

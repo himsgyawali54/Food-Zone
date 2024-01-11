@@ -4,14 +4,14 @@ import App from "./App.jsx";
 import "./index.css";
 import ContextApi from "./context/ContextApi.jsx";
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./Store/appStore.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
-  <Provider store={store}>
-    <React.StrictMode>
+  <React.StrictMode>
+    <Provider store={store}>
       <ContextApi>
         <App />
       </ContextApi>
-    </React.StrictMode>
-  </Provider>
+    </Provider>
+  </React.StrictMode>
 );
