@@ -1,15 +1,21 @@
-import React, { useContext } from "react";
-import { ContextApp } from "../context/ContextApi";
+import React, { useState } from "react";
+
+import { useDispatch, useSelector } from "react-redux";
+import { foodItemsDetails, selectFoodArray } from "../feature/AppReducer";
 const MenuList = () => {
-  const { userdata, setShowAll, setDataItems } = useContext(ContextApp);
+  const [showAll, setShowAll] = useState(false);
+
+  const dispatch = useDispatch();
+  const fooditems = useSelector(selectFoodArray);
 
   const handleItems = (category) => {
     if (category === "All") {
-      setDataItems(userdata);
+      dispatch(foodItemsDetails());
+      console.log(fooditems);
       setShowAll(true);
     } else {
-      const filterArr = userdata.filter((item) => category === item.category);
-      setDataItems(filterArr);
+      const filterArr = fooditems.filter((item) => category === item.category);
+      dispatch(filterArr());
       setShowAll(true);
     }
   };

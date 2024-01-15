@@ -1,16 +1,11 @@
-import React, { useContext } from "react";
-import { ContextApp } from "../context/ContextApi";
+import React, { useState } from "react";
+
 const Nav = () => {
-  const {
-    userdata,
-    searchquery,
-    setSearchQuery,
-    setDataItems,
-    dataitems,
-    resfound,
-    setResFound,
-    setShowAll,
-  } = useContext(ContextApp);
+  const [userdata, setUserData] = useState([]);
+  const [dataitems, setDataItems] = useState([]);
+  const [searchquery, setSearchQuery] = useState("");
+  const [resfound, setResFound] = useState(false);
+
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
