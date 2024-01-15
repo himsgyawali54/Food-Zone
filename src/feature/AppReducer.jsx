@@ -34,5 +34,4 @@ export const foodItemsSlice = createSlice({
   },
 });
 
-export const selectFoodArray = (state) => state.foodItems;
 export default foodItemsSlice.reducer;
