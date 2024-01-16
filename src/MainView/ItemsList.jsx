@@ -1,24 +1,16 @@
-import React, { useEffect, useContext, useState } from "react";
-
+import React, { useState } from "react";
+import { useGetFoodItemsQuery } from "../Api/Api";
 import { useSelector } from "react-redux";
-import { selectFoodArray } from "../feature/AppReducer";
-const ItemsList = () => {
-  // useEffect(() => {
-  //   axios.get("http://localhost:3031/foodItems").then((response) => {
-  //     dispatch(setFoodItems(response.data));
-  //     setDataItems(response.data);
-  //   });
-  // }, []);
-  const [showAll, setShowAll] = useState(false);
 
-  const fooditems = useSelector(selectFoodArray);
+const ItemsList = ({ showAll }) => {
+  const { data } = useGetFoodItemsQuery();
 
   return (
     <>
       <div className="container">
         {showAll ? (
           <div className="grid md:grid-cols-2 my-10 gap-9">
-            {fooditems.map((items) => (
+            {data.map((items) => (
               <div
                 className="card border-solid border p-5 shadow"
                 key={items.id}

@@ -1,12 +1,10 @@
-import React from "react";
 import { configureStore } from "@reduxjs/toolkit";
-HEAD;
-import foodItemsReducer from "../feature/AppReducer";
+import { fooditemsApi } from "../Api/Api";
 
-const store = configureStore({
+export const store = configureStore({
   reducer: {
-    foodItems: foodItemsReducer,
+    [fooditemsApi.reducerPath]: fooditemsApi.reducer,
   },
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(fooditemsApi.middleware),
 });
-
-export default store;

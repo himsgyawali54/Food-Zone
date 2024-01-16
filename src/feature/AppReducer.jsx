@@ -1,37 +1,20 @@
 import React from "react";
-import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios";
+import { createSlice } from "@reduxjs/toolkit";
+
 const initialState = {
-  loading: false,
   FoodItems: [],
-  error: null,
 };
-export const foodItemsDetails = createAsyncThunk(
-  "foodItemsDetail",
-  async () => {
-    await axios.get("http://localhost:3031/foodItems").then((response) => {
-      return response.data;
-    });
-  }
-);
 
 export const foodItemsSlice = createSlice({
   name: "foodItems",
   initialState,
-  extraReducers: {
-    [foodItemsDetails.pending]: (state) => {
-      state.loading = true;
-    },
-    [foodItemsDetails.fulfilled]: (state, action) => {
-      state.loading = false;
+  reducers: {
+    setFoodItems: (state, action) => {
       state.FoodItems = action.payload;
-      state.error = "";
-    },
-    [foodItemsDetails.rejected]: (state, action) => {
-      state.loading = false;
-      state.error = action.error.message;
     },
   },
 });
-
+export const { setFoodItems } = foodItemsSlice.actions;
 export default foodItemsSlice.reducer;
+
+export const selectfood = (state) => state.FoodItems.setFoodItems;
