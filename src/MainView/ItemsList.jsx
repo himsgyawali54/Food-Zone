@@ -3,41 +3,45 @@ import { useGetFoodItemsQuery } from "../Api/Api";
 import { useSelector } from "react-redux";
 
 const ItemsList = ({ showAll }) => {
-  const { data } = useGetFoodItemsQuery();
+  const data = useSelector((state) => state.foodItems.FoodItems);
 
   return (
     <>
       <div className="container">
         {showAll ? (
           <div className="grid md:grid-cols-2 my-10 gap-9">
-            {data.map((items) => (
-              <div
-                className="card border-solid border p-5 shadow"
-                key={items.id}
-              >
-                <div className="grid grid-cols-2 gap-5 items-center">
-                  <div class="col-span-1">
-                    <img src={items.image} alt="" />
-                  </div>
+            {data.length === 0 ? (
+              <p>Opps Items not Found</p>
+            ) : (
+              data?.map((items) => (
+                <div
+                  className="card border-solid border p-5 shadow"
+                  key={items.id}
+                >
+                  <div className="grid grid-cols-2 gap-5 items-center">
+                    <div class="col-span-1">
+                      <img src={items.image} alt="" />
+                    </div>
 
-                  <div class="col-span-1">
-                    <h3 className="font-bold py-1">{items.name}</h3>
-                    <h4>
-                      <span className="font-medium">Category: </span>
-                      {items.category}
-                    </h4>
-                    <button className="bg-yellow-500 p-2 my-2">
-                      Price: Rs.
-                      {items.price}
-                    </button>
-                    <p>
-                      <span className="font-medium">Des: </span>
-                      {items.description}
-                    </p>
+                    <div class="col-span-1">
+                      <h3 className="font-bold py-1">{items.name}</h3>
+                      <h4>
+                        <span className="font-medium">Category: </span>
+                        {items.category}
+                      </h4>
+                      <button className="bg-yellow-500 p-2 my-2">
+                        Price: Rs.
+                        {items.price}
+                      </button>
+                      <p>
+                        <span className="font-medium">Des: </span>
+                        {items.description}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
-            ))}
+              ))
+            )}
           </div>
         ) : (
           <div className="flex flex-col justify-center items-center mt-28 gap-5">
@@ -58,7 +62,7 @@ const ItemsList = ({ showAll }) => {
             </svg>
             <div className="card shadow-xl border-solid border  p-3 w-fit pop">
               <h2 className="font-bold">
-                Click Above Buttons to see Fooditems
+                Click Above Buttons to see and Search Fooditems
               </h2>
             </div>
           </div>

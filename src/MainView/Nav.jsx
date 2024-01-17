@@ -1,28 +1,24 @@
 import React, { useState } from "react";
-
+import { useGetFoodItemsQuery } from "../Api/Api";
+import { useDispatch } from "react-redux";
+import { setFoodItems } from "../feature/AppReducer";
 const Nav = () => {
-  const [userdata, setUserData] = useState([]);
-  const [dataitems, setDataItems] = useState([]);
-  const [searchquery, setSearchQuery] = useState("");
-  const [resfound, setResFound] = useState(false);
+  const { data } = useGetFoodItemsQuery();
 
+  const [searchquery, setSearchQuery] = useState("");
+
+  const dispatch = useDispatch();
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);
     if (query.trim() === "") {
-      setDataItems(userdata);
+      dispatch(setFoodItems(data));
     } else {
-      const searchArr = userdata.filter((item) =>
-        item.name.toLowerCase().includes(searchquery.toLowerCase())
+      const searchArr = data.filter((item) =>
+        item.name.toLowerCase().includes(query.toLowerCase())
       );
-      setDataItems(searchArr);
-    }
-
-    const filteredItems = userdata.filter(
-      (items) => items.name.toLowerCase() !== searchquery.toLowerCase()
-    );
-    if (filteredItems.length > 0) {
-      setResFound(true);
+      console.log(searchArr);
+      dispatch(setFoodItems(searchArr));
     }
   };
   return (

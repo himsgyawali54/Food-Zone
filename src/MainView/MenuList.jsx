@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useGetFoodItemsQuery } from "../Api/Api";
 import { useDispatch } from "react-redux";
-import ItemsList from "./ItemsList";
+import { setFoodItems } from "../feature/AppReducer";
 
 const MenuList = ({ showAll, setShowAll }) => {
   const { data } = useGetFoodItemsQuery();
@@ -10,16 +10,14 @@ const MenuList = ({ showAll, setShowAll }) => {
 
   const handleItems = (category) => {
     if (category === "All") {
-      dispatch, data;
-      console.log(data);
+      dispatch(setFoodItems(data));
+      console.log(dispatch(setFoodItems(data)));
       setShowAll(true);
-      console.log(showAll);
     } else {
       const filterArr = data.filter((item) => category === item.category);
-      dispatch, filterArr;
-      console.log(filterArr);
+      dispatch(setFoodItems(filterArr));
+      console.log(dispatch(setFoodItems(filterArr)));
       setShowAll(true);
-      console.log(showAll);
     }
   };
 
