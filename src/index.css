@@ -59,4 +59,7 @@
       transform: translateY(-15px);
     }
   }
+  label {
+    @apply mb-3 text-lg;
+  }
 }

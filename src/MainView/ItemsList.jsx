@@ -1,16 +1,20 @@
-import React, { useState } from "react";
-import { useGetFoodItemsQuery } from "../Api/Api";
+import React from "react";
+
 import { useSelector } from "react-redux";
 
 const ItemsList = ({ showAll }) => {
-  const data = useSelector((state) => state.foodItems.FoodItems);
+  const fdata = useSelector((state) => state.foodItems);
+  const data = fdata.FoodItems;
+  const ldata = fdata.isLoading;
 
   return (
     <>
       <div className="container">
         {showAll ? (
           <div className="grid md:grid-cols-2 my-10 gap-9">
-            {data.length === 0 ? (
+            {ldata ? (
+              <div>Loading.. </div>
+            ) : data.length === 0 ? (
               <p>Opps Items not Found</p>
             ) : (
               data?.map((items) => (

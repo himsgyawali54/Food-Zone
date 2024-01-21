@@ -3,7 +3,7 @@ import { useGetFoodItemsQuery } from "../Api/Api";
 import { useDispatch } from "react-redux";
 import { setFoodItems } from "../feature/AppReducer";
 const Nav = () => {
-  const { data } = useGetFoodItemsQuery();
+  const { data, isloading } = useGetFoodItemsQuery();
 
   const [searchquery, setSearchQuery] = useState("");
 

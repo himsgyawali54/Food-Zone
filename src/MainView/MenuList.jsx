@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useGetFoodItemsQuery } from "../Api/Api";
 import { useDispatch } from "react-redux";
-import { setFoodItems } from "../feature/AppReducer";
+import { setFoodItems, startLoading } from "../feature/AppReducer";
 
 const MenuList = ({ showAll, setShowAll }) => {
   const { data } = useGetFoodItemsQuery();
