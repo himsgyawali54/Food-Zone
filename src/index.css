@@ -62,4 +62,7 @@
   label {
     @apply mb-3 text-lg;
   }
+  form .flex-col span {
+    @apply text-red-500;
+  }
 }
