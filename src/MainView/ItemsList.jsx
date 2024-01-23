@@ -48,7 +48,7 @@ const ItemsList = ({ showAll }) => {
             )}
           </div>
         ) : (
-          <div className="flex flex-col justify-center items-center mt-28 gap-5">
+          <div className="flex flex-col justify-center items-center mt-28 gap-5 menu-list">
             <svg
               class="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"

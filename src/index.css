@@ -35,11 +35,11 @@
       -webkit-transform: scale(1);
     }
   }
-  svg {
+  .menu-list svg {
     -webkit-animation: mover 1s infinite alternate;
     animation: mover 1s infinite alternate;
   }
-  svg {
+  .menu-list svg {
     -webkit-animation: mover 1s infinite alternate;
     animation: mover 1s infinite alternate;
   }

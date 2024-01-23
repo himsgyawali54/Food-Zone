@@ -1,4 +1,7 @@
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+
 type Inputs = {
   username: string;
   email: string;
@@ -7,6 +10,9 @@ type Inputs = {
 };
 
 const LoginForm = () => {
+  const [toogleVisibility, setToogleVisibility] = useState(false);
+  const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
+
   const {
     register,
     handleSubmit,
@@ -18,6 +24,15 @@ const LoginForm = () => {
   const onSubmit = (data: Inputs) => {
     console.log(data);
     reset();
+    setToogleVisibility(false);
+    setToogleCPVisibility(false);
+  };
+
+  const passwordVisibility = () => {
+    setToogleVisibility(!toogleVisibility);
+  };
+  const cpasswordVisibility = () => {
+    setToogleCPVisibility(!toogleCPVisibility);
   };
 
   return (
@@ -59,16 +74,30 @@ const LoginForm = () => {
                 <span>This Field Is required</span>
               )}
             </div>
-            <div className="mb-3 flex flex-col">
+            <div className="mb-3 flex flex-col relative">
               <label htmlFor="password">Password</label>
+
               <input
                 id="password"
                 {...register("password", { required: true })}
-                className="border rounded w-10/12 py-2 px-3"
+                className="border rounded w-10/12 py-2 px-3 "
+                type={toogleVisibility ? "text" : "password"}
               />
+
+              {toogleVisibility ? (
+                <FaRegEye
+                  className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                  onClick={passwordVisibility}
+                />
+              ) : (
+                <FaRegEyeSlash
+                  className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                  onClick={passwordVisibility}
+                />
+              )}
               {errors.password && <span>This Field Is required</span>}
             </div>
-            <div className="mb-3 flex flex-col">
+            <div className="mb-3 flex flex-col relative">
               <label htmlFor="confirmpassword">Confirm Password</label>
               <input
                 id="confirmpassword"
@@ -81,7 +110,19 @@ const LoginForm = () => {
                   },
                 })}
                 className="border rounded w-10/12 py-2 px-3"
+                type={toogleCPVisibility ? "text" : "password"}
               />
+              {toogleCPVisibility ? (
+                <FaRegEye
+                  className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                  onClick={cpasswordVisibility}
+                />
+              ) : (
+                <FaRegEyeSlash
+                  className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                  onClick={cpasswordVisibility}
+                />
+              )}
               {errors.confirmpassword && (
                 <span>The passwords do not match</span>
               )}
