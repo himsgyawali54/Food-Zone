@@ -5,15 +5,16 @@ import { Forminputs } from "../feature/UserSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
 import { useDispatch } from "react-redux";
 import { setUser, setLoading, setError } from "../feature/UserSlice";
-
+import { useNavigate } from "react-router-dom";
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
 
   //isLoading: boolean that indicates whether the mutation is in progress.
-  //createUser: calling this function will initiate the process of creating a new user.
+  //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
   const [createUser, { isLoading }] = useCreateUserMutation();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const {
     register,
@@ -33,6 +34,7 @@ const LoginForm = () => {
       reset();
       setToogleVisibility(false);
       setToogleCPVisibility(false);
+      navigate("/mainpage");
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
       console.error("Error creating user:", error);
@@ -143,13 +145,14 @@ const LoginForm = () => {
                       <span>The passwords do not match</span>
                     )}
                   </div>
-
+                  {/* <Link to="/mainpage"> */}
                   <button
                     type="submit"
                     className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
                   >
                     Submit
                   </button>
+                  {/* </Link> */}
                 </div>
               )}
             </form>

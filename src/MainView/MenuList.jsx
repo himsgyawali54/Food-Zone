@@ -5,7 +5,7 @@ import { setFoodItems, startLoading } from "../feature/AppReducer";
 
 const MenuList = ({ showAll, setShowAll }) => {
   const { data } = useGetFoodItemsQuery();
-
+  console.log(data);
   const dispatch = useDispatch();
 
   const handleItems = (category) => {

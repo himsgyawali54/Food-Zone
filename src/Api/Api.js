@@ -6,8 +6,8 @@ export const fooditemsApi = createApi({
   baseQuery: fetchBaseQuery({ baseUrl: "http://localhost:3031/" }),
   endpoints: (builder) => ({
     getFoodItems: builder.query({
-      query: () => "fooditems",
-    }),
+      query: () => "foodItems",
+    }), 
   }),
 });
 
