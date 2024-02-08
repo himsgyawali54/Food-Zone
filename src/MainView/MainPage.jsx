@@ -12,7 +12,7 @@ const MainPage = () => {
         <Nav />
         <MenuList showAll={showAll} setShowAll={setShowAll} />
       </div>
-      {/* <ItemsList showAll={showAll} setShowAll={setShowAll} /> */}
+      <ItemsList showAll={showAll} setShowAll={setShowAll} />
     </>
   );
 };

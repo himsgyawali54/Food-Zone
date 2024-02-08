@@ -1,11 +1,10 @@
 import React from "react";
-
 import { useSelector } from "react-redux";
 
 const ItemsList = ({ showAll }) => {
   const fdata = useSelector((state) => state.foodItems);
-  const data = fdata.FoodItems;
-  const ldata = fdata.isLoading;
+  // const data = fdata?.FoodItems;
+  // const ldata = fdata.isLoading;
 
   return (
     <>
@@ -14,20 +13,20 @@ const ItemsList = ({ showAll }) => {
           <div className="grid md:grid-cols-2 my-10 gap-9">
             {ldata ? (
               <div>Loading.. </div>
-            ) : data.length === 0 ? (
+            ) : data?.length === 0 ? (
               <p>Opps Items not Found</p>
             ) : (
-              data?.map((items) => (
+              data.map((items) => (
                 <div
                   className="card border-solid border p-5 shadow"
                   key={items.id}
                 >
                   <div className="grid grid-cols-2 gap-5 items-center">
-                    <div class="col-span-1">
+                    <div className="col-span-1">
                       <img src={items.image} alt="" />
                     </div>
 
-                    <div class="col-span-1">
+                    <div className="col-span-1">
                       <h3 className="font-bold py-1">{items.name}</h3>
                       <h4>
                         <span className="font-medium">Category: </span>
@@ -46,11 +45,12 @@ const ItemsList = ({ showAll }) => {
                 </div>
               ))
             )}
+            <h2>hello</h2>
           </div>
         ) : (
           <div className="flex flex-col justify-center items-center mt-28 gap-5 menu-list">
             <svg
-              class="w-6 h-6 text-gray-800 dark:text-white"
+              className="w-6 h-6 text-gray-800 dark:text-white"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -58,9 +58,9 @@ const ItemsList = ({ showAll }) => {
             >
               <path
                 stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
                 d="M5 13V1m0 0L1 5m4-4 4 4"
               />
             </svg>

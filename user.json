@@ -27,6 +27,13 @@
       "email": "cavivi3042@gearstag.com",
       "password": "hari1234",
       "confirmpassword": "hari1234"
+    },
+    {
+      "id": "0799",
+      "username": "hello",
+      "email": "minagyawali27@gmail.com",
+      "password": "hello",
+      "confirmpassword": "hello"
     }
   ]
 }
