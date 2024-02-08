@@ -3,8 +3,10 @@ import { useSelector } from "react-redux";
 
 const ItemsList = ({ showAll }) => {
   const fdata = useSelector((state) => state.foodItems);
-  // const data = fdata?.FoodItems;
-  // const ldata = fdata.isLoading;
+  console.log(fdata);
+  console.log("hello");
+  const data = fdata?.FoodItems;
+  const ldata = fdata.isLoading;
 
   return (
     <>
@@ -45,7 +47,6 @@ const ItemsList = ({ showAll }) => {
                 </div>
               ))
             )}
-            <h2>hello</h2>
           </div>
         ) : (
           <div className="flex flex-col justify-center items-center mt-28 gap-5 menu-list">
