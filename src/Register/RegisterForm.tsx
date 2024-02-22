@@ -4,30 +4,22 @@ import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 
-interface RegisterForm {
-  firstName: string;
-  lastName: string;
-  username: string;
-  email: string;
-  gender?: string | null;
-  phonenumber?: string | null;
-  address?: string | null;
-  password: string;
-  terms: boolean;
-}
+import { RegisterFormInputs } from "../feature/RegisterSlice";
 
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
-  } = useForm<RegisterForm>({
+  } = useForm<RegisterFormInputs>({
     resolver: yupResolver(registrationSchema),
   });
 
-  const onsubmit: SubmitHandler<RegisterForm> = () => {
-    console.log("form datas");
+  const onsubmit: SubmitHandler<RegisterFormInputs> = (data) => {
+    console.log(data);
+    reset();
   };
   return (
     <>
@@ -110,7 +102,7 @@ const RegisterForm = () => {
                   type="checkbox"
                   {...register("terms")}
                   className="mr-2"
-                  onChange={(e) => setIsChecked(!isChecked)}
+                  onChange={(e) => setIsChecked(e.target.checked)}
                 />
                 <label htmlFor="terms">
                   I agree to the terms and conditions
