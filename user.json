@@ -15,32 +15,13 @@
       "confirmPassword": "test123"
     },
     {
+      "id": "3",
       "username": "abc",
       "email": "gyawali27@gmail.com",
       "password": "1234",
-      "confirmpassword": "1234",
-      "id": "3"
-    },
-    {
-      "id": "4f09",
-      "username": "hari",
-      "email": "cavivi3042@gearstag.com",
-      "password": "hari1234",
-      "confirmpassword": "hari1234"
-    },
-    {
-      "id": "0799",
-      "username": "hello",
-      "email": "minagyawali27@gmail.com",
-      "password": "hello",
-      "confirmpassword": "hello"
-    },
-    {
-      "id": "e92d",
-      "username": "abc",
-      "email": "cavivi3042@gearstag.com",
-      "password": "abc123",
-      "confirmpassword": "abc123"
+      "confirmpassword": "1234"
+      
     }
+    
   ]
 }
