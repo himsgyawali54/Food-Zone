@@ -47,7 +47,7 @@ const LoginForm = () => {
   const cpasswordVisibility = () => {
     setToogleCPVisibility(!toogleCPVisibility);
   };
-  const handleRegister = () => navigate("register");
+  const handleRegister = () => navigate("/register");
   return (
     <>
       <div className="flex bg-slate-100 items-center h-screen">
@@ -145,15 +145,22 @@ const LoginForm = () => {
                       <span>The passwords do not match</span>
                     )}
                   </div>
-                  <button
-                    type="submit"
-                    className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
-                  >
-                    Submit
-                  </button>
-                  <div className="">
-                    Don't have an account?
-                    <span onClick={handleRegister}>Register</span>
+                  <div className="flex gap-4 items-center">
+                    <button
+                      type="submit"
+                      className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
+                    >
+                      Submit
+                    </button>
+                    <div>
+                      Don't have an account?
+                      <span
+                        className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
+                        onClick={handleRegister}
+                      >
+                        Register
+                      </span>
+                    </div>
                   </div>
                 </div>
               )}

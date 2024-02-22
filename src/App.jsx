@@ -1,6 +1,7 @@
 import { useState } from "react";
-import Mainpage from "./MainView/MainPage.jsx";
-import LoginForm from "./Login/LoginForm.tsx";
+import Mainpage from "./MainView/MainPage";
+import LoginForm from "./Login/LoginForm";
+import RegisterForm from "./Register/RegisterForm";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
@@ -10,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/mainpage" element={<Mainpage />} />
+          <Route path="/register" element={<RegisterForm />} />
         </Routes>
       </Router>
     </>
