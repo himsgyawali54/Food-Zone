@@ -3,7 +3,7 @@ import { twMerge } from "tailwind-merge";
 
 interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  extraClass?: string;
+  placeholder?: string;
   error?: string;
   disableFocusStyles?: boolean;
   labelClass?: string;
@@ -14,7 +14,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
     {
       label,
       type = "text",
-      extraClass,
+      placeholder,
       error,
       disableFocusStyles,
       labelClass,
@@ -30,9 +30,10 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
         <input
           {...props}
           ref={ref}
+          placeholder={placeholder}
           type={type}
           className={twMerge(
-            "mt-3 block rounded-lg border border-input px-3.5 py-2.5 placeholder:text-smallText focus:outline-0",
+            "mt-3 w-full block rounded-lg border border-input px-3 py-2 placeholder:text-smallText focus:outline-0",
             error != null ? "border-red-600" : "border-input",
             !disableFocusStyles && "focus:border-primary focus:shadow-input "
           )}
