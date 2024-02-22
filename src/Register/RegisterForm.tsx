@@ -1,35 +1,65 @@
-import { useForm } from "react-hook-form";
+import { SubmitHandler, useForm } from "react-hook-form";
 import TextInput from "../TextInput";
+import { registrationSchema } from "./validation";
+import { yupResolver } from "@hookform/resolvers/yup";
+import { useState } from "react";
+
+interface RegisterForm {
+  firstName: string;
+  lastName: string;
+  username: string;
+  email: string;
+  gender?: string | null;
+  phonenumber?: string | null;
+  address?: string | null;
+  password: string;
+  terms: boolean;
+}
 
 const RegisterForm = () => {
-  const { register } = useForm();
+  const [isChecked, setIsChecked] = useState(false);
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<RegisterForm>({
+    resolver: yupResolver(registrationSchema),
+  });
+
+  const onsubmit: SubmitHandler<RegisterForm> = () => {
+    console.log("form datas");
+  };
   return (
     <>
       <div className="grid justify-center bg-slate-200 h-screen items-center">
         <div className="bg-white h-fit p-5">
           <h3 className="font-medium text-xl pb-2">User Registration Form</h3>
-          <form>
+          <form onSubmit={handleSubmit(onsubmit)}>
             <div className="grid grid-cols-2 gap-x-8">
               <TextInput
                 type="text"
                 placeholder="First Name"
+                error={errors.firstName?.message}
                 {...register("firstName")}
               />
 
               <TextInput
                 type="text"
                 placeholder="Last Name"
-                {...register("firstName")}
+                error={errors.lastName?.message}
+                {...register("lastName")}
               />
               <TextInput
-                type="number"
+                type="text"
                 placeholder="Username"
-                {...register("firstName")}
+                error={errors.username?.message}
+                {...register("username")}
               />
               <TextInput
                 type="email"
                 placeholder="Email Address"
-                {...register("firstName")}
+                error={errors.email?.message}
+                {...register("email")}
               />
             </div>
             <div className="flex items-center gap-5 py-2 ml-1">
@@ -56,21 +86,23 @@ const RegisterForm = () => {
                 </label>
               </div>
             </div>
-            <div className="mt-3 flex flex-col w-11/12">
+            <div className="mt-3 flex flex-col ">
               <TextInput
-                type="text"
+                type="number"
                 placeholder="Phone Number"
-                {...register("firstName")}
+                {...register("phonenumber")}
               />
               <TextInput
                 type="text"
                 placeholder="Address"
-                {...register("firstName")}
+                error={errors.firstName?.message}
+                {...register("address")}
               />
               <TextInput
                 id="password"
                 placeholder="Password"
-                {...register("password", { required: true })}
+                error={errors.password?.message}
+                {...register("password")}
               />
 
               <div className="my-2 ml-1">
@@ -78,6 +110,7 @@ const RegisterForm = () => {
                   type="checkbox"
                   {...register("terms")}
                   className="mr-2"
+                  onChange={(e) => setIsChecked(!isChecked)}
                 />
                 <label htmlFor="terms">
                   I agree to the terms and conditions
@@ -86,6 +119,7 @@ const RegisterForm = () => {
               <button
                 type="submit"
                 className="bg-[#427BFF] text-white py-2 px-4 rounded-md mt-2"
+                disabled={!isChecked}
               >
                 Register
               </button>

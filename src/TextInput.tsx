@@ -6,7 +6,6 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   error?: string;
   disableFocusStyles?: boolean;
-  labelClass?: string;
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -17,14 +16,13 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       placeholder,
       error,
       disableFocusStyles,
-      labelClass,
 
       ...props
     },
     ref
   ) => {
     return (
-      <label className={twMerge("text-mediumText", labelClass)}>
+      <label className={twMerge("text-mediumText")}>
         {label}
 
         <input
