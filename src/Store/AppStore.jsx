@@ -3,10 +3,12 @@ import { fooditemsApi } from "../Api/Api";
 import foodItemsReducer from "../feature/AppReducer";
 import { userAuthApi } from "../Api/UserApi";
 import loginuserReducer from "../feature/UserSlice";
+import registerReducer from "../feature/RegisterSlice";
 
 const rootReducer = combineReducers({
   foodItems: foodItemsReducer,
   loginUser: loginuserReducer,
+  register: registerReducer,
   [fooditemsApi.reducerPath]: fooditemsApi.reducer,
   [userAuthApi.reducerPath]: userAuthApi.reducer,
 });

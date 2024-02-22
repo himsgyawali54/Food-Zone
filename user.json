@@ -20,8 +20,20 @@
       "email": "gyawali27@gmail.com",
       "password": "1234",
       "confirmpassword": "1234"
-      
+    },
+    {
+      "id": "e66c",
+      "firstName": "Nesha",
+      "lastName": "sharma",
+      "username": "mastersab77@gmail.com",
+      "email": "casujanthapaliya@gmail.com",
+      "gender": [
+        "on"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "fdsuf67634",
+      "terms": true
     }
-    
   ]
 }

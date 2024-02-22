@@ -3,11 +3,16 @@ import TextInput from "../TextInput";
 import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-
-import { RegisterFormInputs } from "../feature/RegisterSlice";
+import { useDispatch } from "react-redux";
+import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
+import { useCreateUserMutation } from "../Api/UserApi";
+import { useNavigate } from "react-router-dom";
 
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
+  const [createUser, { isLoading }] = useCreateUserMutation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
@@ -17,7 +22,17 @@ const RegisterForm = () => {
     resolver: yupResolver(registrationSchema),
   });
 
-  const onsubmit: SubmitHandler<RegisterFormInputs> = (data) => {
+  const onsubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
+    try {
+      const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
+      dispatch(setRegisterUser(response));
+      console.log(response);
+      reset();
+
+      navigate("/mainpage");
+    } catch (error) {
+      console.error("Error creating user:", error);
+    }
     console.log(data);
     reset();
   };
