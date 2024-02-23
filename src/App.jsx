@@ -1,4 +1,5 @@
 import { useState } from "react";
+import PrivateRoute from "./PrivateRoute";
 import Mainpage from "./MainView/MainPage";
 import LoginForm from "./Login/LoginForm";
 import RegisterForm from "./Register/RegisterForm";
@@ -10,8 +11,8 @@ function App() {
       <Router>
         <Routes>
           <Route path="/" element={<LoginForm />} />
-          <Route path="/mainpage" element={<Mainpage />} />
           <Route path="/register" element={<RegisterForm />} />
+          <PrivateRoute path="/mainpage" component={<Mainpage />} />
         </Routes>
       </Router>
     </>
