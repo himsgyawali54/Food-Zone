@@ -28,7 +28,7 @@ const Nav = () => {
           F<span className="text-red-600">oo</span>dyZone
         </h3>
       </div>
-      <div class="w-full mt-5 md:mt-0 md:w-1/5 ">
+      <div class="w-full mt-5 md:mt-0 md:w-1/5 flex gap-8">
         <input
           type="text"
           placeholder="Search Food"
@@ -36,6 +36,7 @@ const Nav = () => {
           value={searchquery}
           className="border-solid border-2 border-black-500 p-2"
         />
+        <button className="text-white border px-3 rounded py-0">Logout</button>
       </div>
     </nav>
   );
