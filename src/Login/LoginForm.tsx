@@ -6,6 +6,7 @@ import { useCreateUserMutation } from "../Api/UserApi";
 import { useDispatch } from "react-redux";
 import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
+import { setRegisterUser } from "../feature/RegisterSlice";
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
@@ -28,9 +29,8 @@ const LoginForm = () => {
     try {
       dispatch(setLoading(true));
 
-      const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
-      dispatch(setUser(response));
-      console.log(response);
+      dispatch(setRegisterUser(data));
+      console.log(data);
       reset();
       setToogleVisibility(false);
       setToogleCPVisibility(false);

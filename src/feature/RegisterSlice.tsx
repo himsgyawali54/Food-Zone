@@ -36,7 +36,4 @@ export const registerSlice = createSlice({
 
 export const { setRegisterUser, logout } = registerSlice.actions;
 
-// export const selectUser = (state) => state.register.user;
-// export const selectIsAuthenticated = (state) => state.register.isAuthenticated;
-
 export default registerSlice.reducer;

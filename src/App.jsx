@@ -12,7 +12,9 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
-          <PrivateRoute path="/mainpage" component={<Mainpage />} />
+          <Route element={<PrivateRoute />}>
+            <Route path="/mainpage" element={<Mainpage />} />
+          </Route>
         </Routes>
       </Router>
     </>
