@@ -40,7 +40,7 @@ const Nav = () => {
 
         <button
           className="text-white border px-3 rounded py-0"
-          onClick={() => navigate("/register")}
+          onClick={() => navigate("/")}
         >
           Logout
         </button>
