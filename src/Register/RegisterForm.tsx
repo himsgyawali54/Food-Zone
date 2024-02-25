@@ -28,13 +28,15 @@ const RegisterForm = () => {
       const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
       dispatch(setRegisterUser(response));
       console.log(response);
-      reset();
-      toast.success("Successfully registered!");
+
       navigate("/");
     } catch (error) {
       console.error("Error creating user:", error);
     }
-    console.log(data);
+    toast.success("Successfully registered!", {
+      autoClose: 1500,
+      hideProgressBar: true,
+    });
     reset();
   };
   return (
