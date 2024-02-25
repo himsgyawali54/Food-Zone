@@ -34,6 +34,34 @@
       "address": "",
       "password": "fdsuf67634",
       "terms": true
+    },
+    {
+      "id": "df0d",
+      "firstName": "Nisha",
+      "lastName": "Gyawali",
+      "username": "nishu",
+      "email": "gyawali27@gmail.com",
+      "gender": [
+        "on"
+      ],
+      "phonenumber": "",
+      "address": "butwal",
+      "password": "butwal1234",
+      "terms": true
+    },
+    {
+      "id": "f1e8",
+      "firstName": "Ram",
+      "lastName": "mishra",
+      "username": "ram",
+      "email": "minagyawali27@gmail.com",
+      "gender": [
+        "on"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "ram1234",
+      "terms": true
     }
   ]
 }

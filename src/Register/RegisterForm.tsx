@@ -7,10 +7,11 @@ import { useDispatch } from "react-redux";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
 import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [createUser, { isLoading }] = useCreateUserMutation();
+  const [createUser] = useCreateUserMutation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -28,8 +29,8 @@ const RegisterForm = () => {
       dispatch(setRegisterUser(response));
       console.log(response);
       reset();
-
-      navigate("/mainpage");
+      toast.success("Successfully registered!");
+      navigate("/");
     } catch (error) {
       console.error("Error creating user:", error);
     }
@@ -125,7 +126,7 @@ const RegisterForm = () => {
               </div>
               <button
                 type="submit"
-                className="bg-[#427BFF] text-white py-2 px-4 rounded-md mt-2"
+                className="bg-[#427BFF] text-white py-2 px-4 rounded-md mt-2 cursor-pointer"
                 disabled={!isChecked}
               >
                 Register
