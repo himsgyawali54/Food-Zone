@@ -2,11 +2,12 @@ import React, { useState } from "react";
 import { useGetFoodItemsQuery } from "../Api/Api";
 import { useDispatch } from "react-redux";
 import { setFoodItems } from "../feature/AppReducer";
+import { useNavigate } from "react-router-dom";
 const Nav = () => {
   const { data, isloading } = useGetFoodItemsQuery();
 
   const [searchquery, setSearchQuery] = useState("");
-
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const handleSearch = (e) => {
     const query = e.target.value;
@@ -36,7 +37,13 @@ const Nav = () => {
           value={searchquery}
           className="border-solid border-2 border-black-500 p-2"
         />
-        <button className="text-white border px-3 rounded py-0">Logout</button>
+
+        <button
+          className="text-white border px-3 rounded py-0"
+          onClick={() => navigate("/register")}
+        >
+          Logout
+        </button>
       </div>
     </nav>
   );
