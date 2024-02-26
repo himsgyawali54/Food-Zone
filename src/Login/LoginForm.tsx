@@ -2,18 +2,21 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
-import { useCreateUserMutation } from "../Api/UserApi";
-import { useDispatch } from "react-redux";
-import { setUser, setLoading, setError } from "../feature/UserSlice";
+import { useLoginUserQuery } from "../Api/UserApi";
+import { useDispatch, useSelector } from "react-redux";
+import { setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
+import { RegisterFormInputs } from "../feature/RegisterSlice";
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
 
   //isLoading: boolean that indicates whether the mutation is in progress.
   //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
-  const [createUser, { isLoading }] = useCreateUserMutation();
+
+  const registerUser = useSelector((state: any) => state.register);
+  console.log(registerUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -25,16 +28,29 @@ const LoginForm = () => {
     watch,
   } = useForm<Forminputs>();
 
+  const { data: Users, error, isLoading } = useLoginUserQuery({});
+
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
+      const userExists =
+        registerUser &&
+        registerUser.find(
+          (user: RegisterFormInputs) =>
+            user.username === data.username && user.password === data.password
+        );
+      // console.log(userExists);
+      if (userExists) {
+        dispatch(setRegisterUser(data));
 
-      dispatch(setRegisterUser(data));
-      console.log(data);
-      reset();
-      setToogleVisibility(false);
-      setToogleCPVisibility(false);
-      navigate("/mainpage");
+        reset();
+        setToogleVisibility(false);
+        setToogleCPVisibility(false);
+        navigate("/mainpage");
+      } else {
+        dispatch(setError("Invalid username or password"));
+        alert("username and passowrd incorrect");
+      }
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
       console.error("Error creating user:", error);
@@ -57,113 +73,108 @@ const LoginForm = () => {
           </div>
           <div className="w-full lg:w-1/2">
             <form onSubmit={handleSubmit(onSubmit)}>
-              {isLoading ? (
-                "Creating User.."
-              ) : (
-                <div>
-                  <div className="mb-4 flex flex-col">
-                    <h3 className="text-3xl pb-5 font-semibold">Login</h3>
-                  </div>
-                  <div className="mb-3 flex flex-col">
-                    <label htmlFor="username">UserName</label>
+              <div>
+                <div className="mb-4 flex flex-col">
+                  <h3 className="text-3xl pb-5 font-semibold">Login</h3>
+                </div>
+                <div className="mb-3 flex flex-col">
+                  <label htmlFor="username">UserName</label>
 
-                    <input
-                      id="username"
-                      {...register("username", { required: true })}
-                      className="border rounded w-10/12 py-2 px-3"
-                    />
-                    {errors.username && <span>This Field Is required</span>}
-                  </div>
-                  <div className="mb-3 flex flex-col">
-                    <label htmlFor="email">Email</label>
-                    <input
-                      type="email"
-                      id="email"
-                      {...register("email", {
-                        required: true,
-                        pattern: /^\S+@\S+$/i,
-                      })}
-                      className="border rounded w-10/12 py-2 px-3"
-                    />
-                    {errors.email && errors.email.type === "pattern" && (
-                      <span>Email format is invalid</span>
-                    )}
-                    {errors.email && errors.email.type !== "pattern" && (
+                  <input
+                    id="username"
+                    {...register("username", { required: true })}
+                    className="border rounded w-10/12 py-2 px-3"
+                  />
+                  {errors.username && <span>This Field Is required</span>}
+                </div>
+                <div className="mb-3 flex flex-col">
+                  <label htmlFor="email">Email</label>
+                  <input
+                    type="email"
+                    id="email"
+                    {...register("email", {
+                      pattern: /^\S+@\S+$/i,
+                    })}
+                    className="border rounded w-10/12 py-2 px-3"
+                  />
+                  {errors.email && errors.email.type === "pattern" && (
+                    <span>Email format is invalid</span>
+                  )}
+                  {/* {errors.email && errors.email.type !== "pattern" && (
                       <span>This Field Is required</span>
-                    )}
-                  </div>
-                  <div className="mb-3 flex flex-col relative">
-                    <label htmlFor="password">Password</label>
+                    )} */}
+                </div>
+                <div className="mb-3 flex flex-col relative">
+                  <label htmlFor="password">Password</label>
 
-                    <input
-                      id="password"
-                      {...register("password", { required: true })}
-                      className="border rounded w-10/12 py-2 px-3 "
-                      type={toogleVisibility ? "text" : "password"}
-                    />
+                  <input
+                    id="password"
+                    {...register("password", { required: true })}
+                    className="border rounded w-10/12 py-2 px-3 "
+                    type={toogleVisibility ? "text" : "password"}
+                  />
 
-                    {toogleVisibility ? (
-                      <FaRegEye
-                        className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
-                        onClick={passwordVisibility}
-                      />
-                    ) : (
-                      <FaRegEyeSlash
-                        className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
-                        onClick={passwordVisibility}
-                      />
-                    )}
-                    {errors.password && <span>This Field Is required</span>}
-                  </div>
-                  <div className="mb-3 flex flex-col relative">
-                    <label htmlFor="confirmpassword">Confirm Password</label>
-                    <input
-                      id="confirmpassword"
-                      {...register("confirmpassword", {
-                        required: true,
-                        validate: (val: string) => {
-                          if (watch("password") != val) {
-                            return "Your passwords do no match";
-                          }
-                        },
-                      })}
-                      className="border rounded w-10/12 py-2 px-3"
-                      type={toogleCPVisibility ? "text" : "password"}
+                  {toogleVisibility ? (
+                    <FaRegEye
+                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      onClick={passwordVisibility}
                     />
-                    {toogleCPVisibility ? (
-                      <FaRegEye
-                        className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
-                        onClick={cpasswordVisibility}
-                      />
-                    ) : (
-                      <FaRegEyeSlash
-                        className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
-                        onClick={cpasswordVisibility}
-                      />
-                    )}
-                    {errors.confirmpassword && (
-                      <span>The passwords do not match</span>
-                    )}
-                  </div>
-                  <div className="flex gap-4 items-center">
-                    <button
-                      type="submit"
-                      className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
+                  ) : (
+                    <FaRegEyeSlash
+                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      onClick={passwordVisibility}
+                    />
+                  )}
+                  {errors.password && <span>This Field Is required</span>}
+                </div>
+                <div className="mb-3 flex flex-col relative">
+                  <label htmlFor="confirmpassword">Confirm Password</label>
+                  <input
+                    id="confirmpassword"
+                    {...register("confirmpassword", {
+                      required: true,
+                      validate: (val: string) => {
+                        if (watch("password") != val) {
+                          return "Your passwords do no match";
+                        }
+                      },
+                    })}
+                    className="border rounded w-10/12 py-2 px-3"
+                    type={toogleCPVisibility ? "text" : "password"}
+                  />
+                  {toogleCPVisibility ? (
+                    <FaRegEye
+                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      onClick={cpasswordVisibility}
+                    />
+                  ) : (
+                    <FaRegEyeSlash
+                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      onClick={cpasswordVisibility}
+                    />
+                  )}
+                  {errors.confirmpassword && (
+                    <span>The passwords do not match</span>
+                  )}
+                </div>
+                <div className="flex gap-4 items-center">
+                  <button
+                    type="submit"
+                    className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
+                  >
+                    Submit
+                  </button>
+                  <div>
+                    Don't have an account?
+                    <span
+                      className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
+                      onClick={handleRegister}
                     >
-                      Submit
-                    </button>
-                    <div>
-                      Don't have an account?
-                      <span
-                        className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
-                        onClick={handleRegister}
-                      >
-                        Register
-                      </span>
-                    </div>
+                      Register
+                    </span>
                   </div>
                 </div>
-              )}
+              </div>
             </form>
           </div>
         </div>

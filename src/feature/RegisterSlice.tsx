@@ -1,5 +1,6 @@
 // authSlice.js
 import { createSlice } from "@reduxjs/toolkit";
+
 export interface RegisterFormInputs {
   firstName: string;
   lastName: string;
@@ -12,11 +13,21 @@ export interface RegisterFormInputs {
   terms: boolean;
 }
 interface RForm {
-  user: RegisterFormInputs[] | null;
+  user: RegisterFormInputs;
   isAuthenticated: boolean;
 }
 const initialState: RForm = {
-  user: [],
+  user: {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    gender: "",
+    phonenumber: "",
+    address: "",
+    password: "",
+    terms: false,
+  },
   isAuthenticated: false,
 };
 export const registerSlice = createSlice({
@@ -29,11 +40,13 @@ export const registerSlice = createSlice({
     },
     logout: (state) => {
       state.isAuthenticated = false;
-      state.user = null;
     },
   },
 });
 
 export const { setRegisterUser, logout } = registerSlice.actions;
+// export const selectUser = (state: RootState) => state.register.user;
+// export const selectIsAuthenticated = (state: RootState) =>
+//   state.register.isAuthenticated;
 
 export default registerSlice.reducer;
