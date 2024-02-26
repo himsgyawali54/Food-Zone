@@ -14,7 +14,6 @@ export interface RegisterFormInputs {
 }
 interface RForm {
   user: RegisterFormInputs;
-  isAuthenticated: boolean;
 }
 const initialState: RForm = {
   user: {
@@ -28,23 +27,21 @@ const initialState: RForm = {
     password: "",
     terms: false,
   },
-  isAuthenticated: false,
 };
 export const registerSlice = createSlice({
   initialState,
   name: "register",
   reducers: {
     setRegisterUser: (state, action) => {
-      state.isAuthenticated = true;
       state.user = action.payload;
     },
-    logout: (state) => {
-      state.isAuthenticated = false;
-    },
+    // logout: (state) => {
+    //   state.isAuthenticated = false;
+    // },
   },
 });
 
-export const { setRegisterUser, logout } = registerSlice.actions;
+export const { setRegisterUser } = registerSlice.actions;
 // export const selectUser = (state: RootState) => state.register.user;
 // export const selectIsAuthenticated = (state: RootState) =>
 //   state.register.isAuthenticated;

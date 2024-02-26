@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
-import { useLoginUserQuery } from "../Api/UserApi";
+// import { useLoginUserQuery } from "../Api/UserApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
@@ -17,7 +17,7 @@ const LoginForm = () => {
   //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
 
   const registerUser = useSelector((state: any) => state.register);
-  console.log("register");
+
   console.log(registerUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -30,8 +30,6 @@ const LoginForm = () => {
     watch,
   } = useForm<Forminputs>();
 
-  const { data: Users, error, isLoading } = useLoginUserQuery({});
-
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
@@ -41,17 +39,22 @@ const LoginForm = () => {
         registeredUser.password === data.password
       ) {
         dispatch(setUser([data]));
-        console.log(data);
         reset();
         setToogleVisibility(false);
         setToogleCPVisibility(false);
-        navigate("/mainpage");
+
+        toast.success("LoggedIn successfully", {
+          hideProgressBar: true,
+          autoClose: 1000,
+        });
+        setTimeout(() => {
+          navigate("/mainpage");
+        }, 1000);
       } else {
         toast.error("Inavlid Username and password", { autoClose: 2000 });
       }
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
-      console.error("Error creating user:", error);
     }
   };
 
@@ -98,9 +101,6 @@ const LoginForm = () => {
                   {errors.email && errors.email.type === "pattern" && (
                     <span>Email format is invalid</span>
                   )}
-                  {/* {errors.email && errors.email.type !== "pattern" && (
-                      <span>This Field Is required</span>
-                    )} */}
                 </div>
                 <div className="mb-3 flex flex-col relative">
                   <label htmlFor="password">Password</label>

@@ -6,7 +6,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
-import { useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
@@ -30,14 +30,17 @@ const RegisterForm = () => {
       dispatch(setRegisterUser(response));
       console.log(response);
 
-      navigate("/");
+      setTimeout(() => {
+        navigate("/");
+      }, 1500);
+      toast.success("Successfully registered!", {
+        autoClose: 1500,
+        hideProgressBar: true,
+      });
     } catch (error) {
       console.error("Error creating user:", error);
     }
-    toast.success("Successfully registered!", {
-      autoClose: 2000,
-      hideProgressBar: true,
-    });
+
     reset();
   };
   return (
@@ -144,6 +147,15 @@ const RegisterForm = () => {
                   >
                     Register
                   </button>
+                  <p className="py-3 text-center">
+                    Already have an account?
+                    <Link
+                      to="/"
+                      className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
+                    >
+                      Login
+                    </Link>
+                  </p>
                 </div>
               </>
             )}
