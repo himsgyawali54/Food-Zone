@@ -8,6 +8,7 @@ import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
+import { toast } from "react-toastify";
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
@@ -34,12 +35,20 @@ const LoginForm = () => {
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
-      dispatch(setUser([data]));
-      console.log(data);
-      reset();
-      setToogleVisibility(false);
-      setToogleCPVisibility(false);
-      navigate("/mainpage");
+      const registeredUser = registerUser.user;
+      if (
+        registeredUser.username === data.username &&
+        registeredUser.password === data.password
+      ) {
+        dispatch(setUser([data]));
+        console.log(data);
+        reset();
+        setToogleVisibility(false);
+        setToogleCPVisibility(false);
+        navigate("/mainpage");
+      } else {
+        toast.error("Inavlid Username and password", { autoClose: 2000 });
+      }
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
       console.error("Error creating user:", error);

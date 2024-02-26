@@ -35,7 +35,7 @@ const RegisterForm = () => {
       console.error("Error creating user:", error);
     }
     toast.success("Successfully registered!", {
-      autoClose: 1500,
+      autoClose: 2000,
       hideProgressBar: true,
     });
     reset();
