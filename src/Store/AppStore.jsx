@@ -1,5 +1,5 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
-import { fooditemsApi } from "../Api/Api";
+import { fooditemsApi } from "../Api/api";
 import foodItemsReducer from "../feature/AppReducer";
 import { userAuthApi } from "../Api/UserApi";
 import loginuserReducer from "../feature/UserSlice";

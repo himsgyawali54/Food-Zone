@@ -4,7 +4,7 @@ import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
 import { useLoginUserQuery } from "../Api/UserApi";
 import { useDispatch, useSelector } from "react-redux";
-import { setLoading, setError } from "../feature/UserSlice";
+import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
@@ -16,6 +16,7 @@ const LoginForm = () => {
   //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
 
   const registerUser = useSelector((state: any) => state.register);
+  console.log("register");
   console.log(registerUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,24 +34,12 @@ const LoginForm = () => {
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
-      const userExists =
-        registerUser &&
-        registerUser.find(
-          (user: RegisterFormInputs) =>
-            user.username === data.username && user.password === data.password
-        );
-      // console.log(userExists);
-      if (userExists) {
-        dispatch(setRegisterUser(data));
-
-        reset();
-        setToogleVisibility(false);
-        setToogleCPVisibility(false);
-        navigate("/mainpage");
-      } else {
-        dispatch(setError("Invalid username or password"));
-        alert("username and passowrd incorrect");
-      }
+      dispatch(setUser([data]));
+      console.log(data);
+      reset();
+      setToogleVisibility(false);
+      setToogleCPVisibility(false);
+      navigate("/mainpage");
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
       console.error("Error creating user:", error);

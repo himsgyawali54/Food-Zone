@@ -3,8 +3,7 @@ import { useSelector } from "react-redux";
 
 const ItemsList = ({ showAll }) => {
   const fdata = useSelector((state) => state.foodItems);
-  console.log(fdata);
-  console.log("hello");
+
   const data = fdata?.FoodItems;
   const ldata = fdata.isLoading;
 

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetFoodItemsQuery } from "../Api/Api";
+import { useGetFoodItemsQuery } from "../Api/api";
 import { useDispatch } from "react-redux";
 import { setFoodItems, startLoading } from "../feature/AppReducer";
 
