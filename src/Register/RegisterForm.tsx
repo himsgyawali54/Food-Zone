@@ -12,6 +12,7 @@ import { toast } from "react-toastify";
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [createUser, { isLoading }] = useCreateUserMutation();
+  const [gender, setGender] = useState("");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const {
@@ -82,7 +83,10 @@ const RegisterForm = () => {
                       type="checkbox"
                       id="male"
                       className="cursor-pointer mr-2 "
-                      {...register("gender", { value: "male" })}
+                      {...register("gender")}
+                      value="male"
+                      checked={gender === "male"}
+                      onChange={() => setGender("male")}
                     />
                     <label htmlFor="male" className="text-gray-600">
                       Male
@@ -93,7 +97,10 @@ const RegisterForm = () => {
                       type="checkbox"
                       id="female"
                       className="cursor-pointer mr-2"
-                      {...register("gender", { value: "female" })}
+                      {...register("gender")}
+                      value="female"
+                      checked={gender === "female"}
+                      onChange={() => setGender("female")}
                     />
                     <label htmlFor="female" className="text-gray-600">
                       Female

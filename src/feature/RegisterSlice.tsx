@@ -13,20 +13,21 @@ export interface RegisterFormInputs {
   terms: boolean;
 }
 interface RForm {
-  user: RegisterFormInputs[];
+  user: RegisterFormInputs;
   isAuthenticated: boolean;
 }
 const initialState: RForm = {
-  user: [],
-  // firstName: "",
-  // lastName: "",
-  // username: "",
-  // email: "",
-  // gender: "",
-  // phonenumber: "",
-  // address: "",
-  // password: "",
-  // terms: false,
+  user: {
+    firstName: "",
+    lastName: "",
+    username: "",
+    email: "",
+    gender: "",
+    phonenumber: "",
+    address: "",
+    password: "",
+    terms: false,
+  },
   isAuthenticated: false,
 };
 export const registerSlice = createSlice({
