@@ -86,6 +86,34 @@
       "address": "",
       "password": "1234567",
       "terms": true
+    },
+    {
+      "id": "b50a",
+      "firstName": "Nisha",
+      "lastName": "mishra",
+      "username": "poojakhadka3636@gmail.com",
+      "email": "gyawali27@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "1311111445",
+      "terms": true
+    },
+    {
+      "id": "b68a",
+      "firstName": "hem",
+      "lastName": "mishra",
+      "username": "abc",
+      "email": "minagyawali27@gmail.com",
+      "gender": [
+        "male"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "12345678",
+      "terms": true
     }
   ]
 }

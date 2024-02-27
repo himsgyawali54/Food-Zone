@@ -2,11 +2,11 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import TextInput from "../TextInput";
 import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
-import { Link, Navigate, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
@@ -23,6 +23,14 @@ const RegisterForm = () => {
   } = useForm<RegisterFormInputs>({
     resolver: yupResolver(registrationSchema),
   });
+  useEffect(() => {
+    const userData = localStorage.getItem("userData");
+    const token = localStorage.getItem("token");
+    if (userData && token) {
+      const parsedUserData = JSON.parse(userData);
+      dispatch(setRegisterUser(parsedUserData));
+    }
+  }, []);
 
   const onsubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
     try {
