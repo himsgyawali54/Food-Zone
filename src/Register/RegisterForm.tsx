@@ -29,7 +29,8 @@ const RegisterForm = () => {
       const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
       dispatch(setRegisterUser(response));
       console.log(response);
-
+      localStorage.setItem("userData", JSON.stringify(response));
+      localStorage.setItem("token", response.token);
       setTimeout(() => {
         navigate("/");
       }, 1500);

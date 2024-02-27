@@ -72,6 +72,20 @@
       "address": "",
       "password": "123456",
       "terms": true
+    },
+    {
+      "id": "0e5b",
+      "firstName": "Nesha",
+      "lastName": "mishra",
+      "username": "abc",
+      "email": "casujanthapaliya@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "1234567",
+      "terms": true
     }
   ]
 }

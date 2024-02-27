@@ -11,12 +11,6 @@ export const userAuthApi = createApi({
         body: newUser,
       }),
     }),
-    // loginUser: builder.query({
-    //   query: ({ username, password }) => ({
-    //     url: `users?username=${username}&password=${password}`, // Assuming your API endpoint returns user data if authenticated
-    //     method: "GET",
-    //   }),
-    // }),
   }),
 });
 export const { useCreateUserMutation } = userAuthApi;
