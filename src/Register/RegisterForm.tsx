@@ -23,22 +23,36 @@ const RegisterForm = () => {
   } = useForm<RegisterFormInputs>({
     resolver: yupResolver(registrationSchema),
   });
-  useEffect(() => {
-    const userData = localStorage.getItem("userData");
-    const token = localStorage.getItem("token");
-    if (userData && token) {
-      const parsedUserData = JSON.parse(userData);
-      dispatch(setRegisterUser(parsedUserData));
-    }
-  }, []);
 
   const onsubmit: SubmitHandler<RegisterFormInputs> = async (data) => {
     try {
       const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
       dispatch(setRegisterUser(response));
       console.log(response);
-      localStorage.setItem("userData", JSON.stringify(response));
+      const storedUserData = localStorage.getItem("userData");
+      const storedToken = localStorage.getItem("token");
+
+      if (storedUserData && storedToken) {
+        try {
+          let existingData = JSON.parse(storedUserData);
+          // If existingData is not an array, convert it to an array
+          if (!Array.isArray(existingData)) {
+            existingData = [existingData];
+          }
+          const updatedData = [...existingData, response];
+          localStorage.setItem("userData", JSON.stringify(updatedData));
+        } catch (error) {
+          console.error(
+            "Error parsing or updating user data in local storage:",
+            error
+          );
+        }
+      } else {
+        // If no data exists in local storage, initialize it with an array containing the current user's data
+        localStorage.setItem("userData", JSON.stringify([response]));
+      }
       localStorage.setItem("token", response.token);
+
       setTimeout(() => {
         navigate("/");
       }, 1500);

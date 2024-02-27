@@ -60,11 +60,81 @@
       "terms": true
     },
     {
-      "id": "95e8",
+      "id": "8127",
+      "firstName": "Nesha",
+      "lastName": "Gyawali",
+      "username": "abc",
+      "email": "gyawali27@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "123456",
+      "terms": true
+    },
+    {
+      "id": "64a4",
       "firstName": "madhav",
       "lastName": "sharma",
+      "username": "madu",
+      "email": "gyawali27@gmail.com",
+      "gender": [
+        "male"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "1234567",
+      "terms": true
+    },
+    {
+      "id": "bea8",
+      "firstName": "Nisha",
+      "lastName": "Gyawali",
+      "username": "nisha",
+      "email": "cavivi3042@gearstag.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "12345678",
+      "terms": true
+    },
+    {
+      "id": "86af",
+      "firstName": "Nisha",
+      "lastName": "Sharma",
+      "username": "nishu",
+      "email": "thapaliyasujan86@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "12345678",
+      "terms": true
+    },
+    {
+      "id": "3dab",
+      "firstName": "madhav",
+      "lastName": "mishra",
       "username": "abc",
-      "email": "casujanthapaliya@gmail.com",
+      "email": "himanigyawali@hotmail.com",
+      "gender": [
+        "male"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "1234567",
+      "terms": true
+    },
+    {
+      "id": "073a",
+      "firstName": "madhav",
+      "lastName": "mishra",
+      "username": "madhav",
+      "email": "minagyawali27@gmail.com",
       "gender": [
         "male"
       ],
@@ -74,45 +144,17 @@
       "terms": true
     },
     {
-      "id": "0e5b",
-      "firstName": "Nesha",
-      "lastName": "mishra",
-      "username": "abc",
-      "email": "casujanthapaliya@gmail.com",
-      "gender": [
-        "female"
-      ],
-      "phonenumber": "",
-      "address": "",
-      "password": "1234567",
-      "terms": true
-    },
-    {
-      "id": "b50a",
-      "firstName": "Nisha",
-      "lastName": "mishra",
-      "username": "poojakhadka3636@gmail.com",
-      "email": "gyawali27@gmail.com",
-      "gender": [
-        "female"
-      ],
-      "phonenumber": "",
-      "address": "",
-      "password": "1311111445",
-      "terms": true
-    },
-    {
-      "id": "b68a",
+      "id": "1451",
       "firstName": "hem",
-      "lastName": "mishra",
-      "username": "abc",
-      "email": "minagyawali27@gmail.com",
+      "lastName": "badhur",
+      "username": "hema",
+      "email": "cavivi3042@gearstag.com",
       "gender": [
         "male"
       ],
       "phonenumber": "",
       "address": "",
-      "password": "12345678",
+      "password": "123789",
       "terms": true
     }
   ]

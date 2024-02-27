@@ -33,25 +33,37 @@ const LoginForm = () => {
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
-      const registeredUser = registerUser.user;
-      if (
-        registeredUser.username === data.username &&
-        registeredUser.password === data.password
-      ) {
-        dispatch(setUser([data]));
-        reset();
-        setToogleVisibility(false);
-        setToogleCPVisibility(false);
+      const storedUserData = localStorage.getItem("userData");
 
-        toast.success("LoggedIn successfully", {
-          hideProgressBar: true,
-          autoClose: 1000,
-        });
-        setTimeout(() => {
-          navigate("/mainpage");
-        }, 1000);
+      if (storedUserData) {
+        const registeredUsers: RegisterFormInputs[] =
+          JSON.parse(storedUserData);
+
+        // Find the user with matching username and password
+        const matchedUser = registeredUsers.find(
+          (user) =>
+            user.username === data.username && user.password === data.password
+        );
+
+        if (matchedUser) {
+          dispatch(setUser([data]));
+          reset();
+          setToogleVisibility(false);
+          setToogleCPVisibility(false);
+
+          toast.success("LoggedIn successfully", {
+            hideProgressBar: true,
+            autoClose: 1000,
+          });
+          setTimeout(() => {
+            navigate("/mainpage");
+          }, 1000);
+        } else {
+          toast.error("Inavlid Username and password", { autoClose: 2000 });
+        }
       } else {
-        toast.error("Inavlid Username and password", { autoClose: 2000 });
+        // No registered users in local storage
+        toast.error("No registered users found", { autoClose: 2000 });
       }
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
