@@ -33,6 +33,7 @@ const LoginForm = () => {
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
+      dispatch(setUser([data]));
       const storedUserData = localStorage.getItem("userData");
 
       if (storedUserData) {
@@ -55,9 +56,10 @@ const LoginForm = () => {
             hideProgressBar: true,
             autoClose: 1000,
           });
-          setTimeout(() => {
-            navigate("/mainpage");
-          }, 1000);
+          // setTimeout(() => {
+          //   navigate("/mainpage");
+          // }, 1000);
+          navigate("/mainpage");
         } else {
           toast.error("Inavlid Username and password", { autoClose: 2000 });
         }

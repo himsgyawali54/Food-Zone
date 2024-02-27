@@ -7,6 +7,7 @@ const PrivateRoute = () => {
   const isAuthenticated = useSelector(
     (state: any) => state.register.isAuthenticated
   );
+  console.log(isAuthenticated);
 
   return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
 };

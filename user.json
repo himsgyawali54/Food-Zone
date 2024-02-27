@@ -156,6 +156,20 @@
       "address": "",
       "password": "123789",
       "terms": true
+    },
+    {
+      "id": "6663",
+      "firstName": "Nesha",
+      "lastName": "Sharma",
+      "username": "nis",
+      "email": "minagyawali27@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "123456",
+      "terms": true
     }
   ]
 }
