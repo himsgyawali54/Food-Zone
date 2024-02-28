@@ -170,6 +170,20 @@
       "address": "",
       "password": "123456",
       "terms": true
+    },
+    {
+      "id": "ede0",
+      "firstName": "hello",
+      "lastName": "sharma",
+      "username": "abc",
+      "email": "mina@gmail.com",
+      "gender": [
+        "female"
+      ],
+      "phonenumber": "",
+      "address": "",
+      "password": "123456",
+      "terms": true
     }
   ]
 }

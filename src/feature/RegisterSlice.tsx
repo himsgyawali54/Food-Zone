@@ -1,7 +1,5 @@
 // authSlice.js
 import { createSlice } from "@reduxjs/toolkit";
-const storedUserData = localStorage.getItem("userData");
-const storedToken = localStorage.getItem("token");
 
 export interface RegisterFormInputs {
   firstName: string;
@@ -30,16 +28,7 @@ const initialState: RForm = {
     terms: false,
   },
 };
-if (storedUserData && storedToken) {
-  try {
-    const parsedUserData = JSON.parse(storedUserData);
-    const initialState = {
-      user: parsedUserData,
-    };
-  } catch (error) {
-    console.error("Error parsing user data from local storage:", error);
-  }
-}
+
 export const registerSlice = createSlice({
   initialState,
   name: "register",

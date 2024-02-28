@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
+import jwt from "jsonwebtoken";
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
@@ -34,8 +35,9 @@ const LoginForm = () => {
       dispatch(setLoading(true));
 
       const storedUserData = localStorage.getItem("userData");
+      const storedToken = localStorage.getItem("token");
 
-      if (storedUserData) {
+      if (storedUserData && storedToken) {
         const registeredUsers: RegisterFormInputs[] =
           JSON.parse(storedUserData);
 
@@ -44,6 +46,10 @@ const LoginForm = () => {
           (user) =>
             user.username === data.username && user.password === data.password
         );
+        if (matchedUser) {
+          const token = jwt.sign({ username: data.username }, "SECRETKEY");
+          const tokens = JSON.parse(token);
+        }
 
         if (matchedUser) {
           dispatch(setUser([data]));
