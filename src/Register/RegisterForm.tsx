@@ -68,11 +68,11 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2 items-center ">
+      <div className="grid grid-cols-1 md:grid-cols-2">
         <div>
-          <img src="img/signup-img.jpg" alt="" height="200px" />
+          <img src="img/signup-img.jpg" alt="" className="h-full" />
         </div>
-        <div className="bg-white  py-2 ps-14 pr-10 h-fit">
+        <div className="bg-white  py-3 px-4 md:px-7 lg:px-12">
           <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
           <form onSubmit={handleSubmit(onsubmit)}>
             {isLoading ? (
