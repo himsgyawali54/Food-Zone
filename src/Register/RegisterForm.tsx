@@ -72,7 +72,7 @@ const RegisterForm = () => {
         <div>
           <img src="img/signup-img.jpg" alt="" className="h-full" />
         </div>
-        <div className="bg-white  py-3 px-4 md:px-7 lg:px-12">
+        <div className="bg-white  py-3 px-4 md:px-7 lg:px-16 shadow-lg">
           <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
           <form onSubmit={handleSubmit(onsubmit)}>
             {isLoading ? (
