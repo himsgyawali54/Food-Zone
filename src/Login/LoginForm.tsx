@@ -90,7 +90,7 @@ const LoginForm = () => {
                 <div className="mb-4 flex flex-col">
                   <h3 className="text-3xl pb-5 font-semibold">Login</h3>
                 </div>
-                <div className="mb-3 flex flex-col">
+                <div className="mb-4 flex flex-col">
                   <label htmlFor="username">UserName</label>
 
                   <input
@@ -100,21 +100,8 @@ const LoginForm = () => {
                   />
                   {errors.username && <span>This Field Is required</span>}
                 </div>
-                <div className="mb-3 flex flex-col">
-                  <label htmlFor="email">Email</label>
-                  <input
-                    type="email"
-                    id="email"
-                    {...register("email", {
-                      pattern: /^\S+@\S+$/i,
-                    })}
-                    className="border rounded w-10/12 py-2 px-3"
-                  />
-                  {errors.email && errors.email.type === "pattern" && (
-                    <span>Email format is invalid</span>
-                  )}
-                </div>
-                <div className="mb-3 flex flex-col relative">
+
+                <div className="mb-4 flex flex-col relative">
                   <label htmlFor="password">Password</label>
 
                   <input
@@ -137,7 +124,7 @@ const LoginForm = () => {
                   )}
                   {errors.password && <span>This Field Is required</span>}
                 </div>
-                <div className="mb-3 flex flex-col relative">
+                <div className="mb-4 flex flex-col relative">
                   <label htmlFor="confirmpassword">Confirm Password</label>
                   <input
                     id="confirmpassword"
