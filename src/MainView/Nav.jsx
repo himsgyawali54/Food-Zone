@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetFoodItemsQuery } from "../Api/Api";
+import { useGetFoodItemsQuery } from "../Api/api";
 import { useDispatch } from "react-redux";
 import { setFoodItems } from "../feature/AppReducer";
 import { useNavigate } from "react-router-dom";
@@ -29,7 +29,7 @@ const Nav = () => {
           F<span className="text-red-600">oo</span>dyZone
         </h3>
       </div>
-      <div class="w-full mt-5 md:mt-0 md:w-1/5 flex gap-8">
+      <div class="w-full mt-5 md:mt-0 md:w-3/4 justify-end flex gap-8">
         <input
           type="text"
           placeholder="Search Food"

@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
-// import { useLoginUserQuery } from "../Api/UserApi";
 import { useDispatch, useSelector } from "react-redux";
 import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
@@ -33,7 +32,7 @@ const LoginForm = () => {
   const onSubmit = async (data: Forminputs) => {
     try {
       dispatch(setLoading(true));
-      dispatch(setUser([data]));
+
       const storedUserData = localStorage.getItem("userData");
 
       if (storedUserData) {
@@ -56,10 +55,9 @@ const LoginForm = () => {
             hideProgressBar: true,
             autoClose: 1000,
           });
-          // setTimeout(() => {
-          //   navigate("/mainpage");
-          // }, 1000);
-          navigate("/mainpage");
+          setTimeout(() => {
+            navigate("/mainpage");
+          }, 1000);
         } else {
           toast.error("Inavlid Username and password", { autoClose: 2000 });
         }
