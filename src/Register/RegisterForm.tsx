@@ -68,15 +68,18 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <div className="grid justify-center bg-slate-200 h-screen items-center ">
-        <div className="bg-white h-fit p-5">
-          <h3 className="font-medium text-xl pb-2">User Registration Form</h3>
+      <div className="grid grid-cols-1 md:grid-cols-2 items-center ">
+        <div>
+          <img src="img/signup-img.jpg" alt="" height="200px" />
+        </div>
+        <div className="bg-white  py-2 ps-14 pr-10 h-fit">
+          <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
           <form onSubmit={handleSubmit(onsubmit)}>
             {isLoading ? (
               "Creating User.."
             ) : (
               <>
-                <div className="grid grid-cols-2 gap-x-8">
+                <div className="grid grid-cols-2 gap-x-8 mt-2">
                   <TextInput
                     type="text"
                     placeholder="First Name"
@@ -165,12 +168,12 @@ const RegisterForm = () => {
                   </div>
                   <button
                     type="submit"
-                    className="bg-[#427BFF] text-white py-2 px-4 rounded-md mt-2 cursor-pointer"
+                    className="bg-[#427BFF] text-white py-2 px-4 rounded-md mt-3 cursor-pointer"
                     disabled={!isChecked}
                   >
                     Register
                   </button>
-                  <p className="py-3 text-center">
+                  <p className="pt-3 text-center">
                     Already have an account?
                     <Link
                       to="/"
