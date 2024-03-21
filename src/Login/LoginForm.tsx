@@ -19,7 +19,6 @@ const LoginForm = () => {
 
   const registerUser = useSelector((state: any) => state.register);
 
-  console.log(registerUser);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -53,9 +52,7 @@ const LoginForm = () => {
           //   "your-secret-key"
           // );
           // localStorage.setItem("token", token);
-          const token = generateToken(matchedUser.username);
-          // Store token in local storage
-          localStorage.setItem("token", token);
+
           dispatch(setUser([data]));
 
           setToogleVisibility(false);
@@ -81,22 +78,6 @@ const LoginForm = () => {
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
     }
-  };
-  // Function to generate JWT token
-  const generateToken = (username: string) => {
-    // Your secret key
-    const secretKey = "opssecret";
-
-    // Payload for the token
-    const payload = {
-      username: username,
-    };
-
-    // Generate the token
-    const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
-
-    // Return the generated token
-    return token;
   };
 
   const passwordVisibility = () => {
@@ -142,12 +123,12 @@ const LoginForm = () => {
 
                   {toogleVisibility ? (
                     <FaRegEye
-                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
                       onClick={passwordVisibility}
                     />
                   ) : (
                     <FaRegEyeSlash
-                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
                       onClick={passwordVisibility}
                     />
                   )}
@@ -170,12 +151,12 @@ const LoginForm = () => {
                   />
                   {toogleCPVisibility ? (
                     <FaRegEye
-                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
                       onClick={cpasswordVisibility}
                     />
                   ) : (
                     <FaRegEyeSlash
-                      className="absolute top-12 right-20 md:right-32 lg:right-24 text-xl cursor-pointer"
+                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
                       onClick={cpasswordVisibility}
                     />
                   )}

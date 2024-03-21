@@ -4,13 +4,13 @@ import { UserState } from "./feature/UserSlice";
 
 const PrivateRoute = () => {
   console.log("hello");
-  const isAuthenticated = useSelector(
-    (state: any) => state.userAuth.isAuthenticated
+  const Authenticated = useSelector(
+    (state: { userAuth: UserState }) => state.userAuth.isAuthenticated
   );
 
-  console.log(isAuthenticated);
+  console.log(Authenticated);
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
+  return Authenticated ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default PrivateRoute;

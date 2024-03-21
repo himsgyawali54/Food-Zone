@@ -2,7 +2,7 @@ import { SubmitHandler, useForm } from "react-hook-form";
 import TextInput from "../TextInput";
 import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
@@ -28,7 +28,7 @@ const RegisterForm = () => {
     try {
       const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
       dispatch(setRegisterUser(response));
-      console.log(response);
+
       const storedUserData = localStorage.getItem("userData");
 
       if (storedUserData) {
