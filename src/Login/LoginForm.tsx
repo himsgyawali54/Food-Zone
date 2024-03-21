@@ -9,6 +9,7 @@ import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
 import jwt from "jsonwebtoken";
+
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
   const [toogleCPVisibility, setToogleCPVisibility] = useState(false);
@@ -35,9 +36,8 @@ const LoginForm = () => {
       dispatch(setLoading(true));
 
       const storedUserData = localStorage.getItem("userData");
-      const storedToken = localStorage.getItem("token");
 
-      if (storedUserData && storedToken) {
+      if (storedUserData) {
         const registeredUsers: RegisterFormInputs[] =
           JSON.parse(storedUserData);
 
@@ -46,14 +46,15 @@ const LoginForm = () => {
           (user) =>
             user.username === data.username && user.password === data.password
         );
-        if (matchedUser) {
-          const token = jwt.sign({ username: data.username }, "SECRETKEY");
-          const tokens = JSON.parse(token);
-        }
 
         if (matchedUser) {
+          // const token = jwt.sign(
+          //   { username: matchedUser.username },
+          //   "your-secret-key"
+          // );
+          // localStorage.setItem("token", token);
           dispatch(setUser([data]));
-          reset();
+
           setToogleVisibility(false);
           setToogleCPVisibility(false);
 
@@ -66,6 +67,9 @@ const LoginForm = () => {
           }, 1000);
         } else {
           toast.error("Inavlid Username and password", { autoClose: 2000 });
+          // setTimeout(() => {
+          //   reset();
+          // }, 2000);
         }
       } else {
         // No registered users in local storage

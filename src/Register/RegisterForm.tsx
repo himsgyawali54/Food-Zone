@@ -30,9 +30,8 @@ const RegisterForm = () => {
       dispatch(setRegisterUser(response));
       console.log(response);
       const storedUserData = localStorage.getItem("userData");
-      const storedToken = localStorage.getItem("token");
 
-      if (storedUserData && storedToken) {
+      if (storedUserData) {
         try {
           let existingData = JSON.parse(storedUserData);
           // If existingData is not an array, convert it to an array
@@ -51,7 +50,6 @@ const RegisterForm = () => {
         // If no data exists in local storage, initialize it with an array containing the current user's data
         localStorage.setItem("userData", JSON.stringify([response]));
       }
-      localStorage.setItem("token", response.token);
 
       setTimeout(() => {
         navigate("/");

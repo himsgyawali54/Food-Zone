@@ -1,15 +1,15 @@
-// PrivateRoute.jsx
-import React from "react";
 import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
+import { UserState } from "./feature/UserSlice";
 
 const PrivateRoute = () => {
-  const isAuthenticated = useSelector(
-    (state: any) => state.userAuth.isAuthenticated
-  );
+  console.log("hello");
+  const { userAuth } = useSelector((state: any) => state);
+  const { isAuthenticated } = userAuth;
+
   console.log(isAuthenticated);
 
-  return isAuthenticated ? <Outlet /> : <Navigate to="/login" replace />;
+  return isAuthenticated ? <Outlet /> : <Navigate to="/" replace />;
 };
 
 export default PrivateRoute;

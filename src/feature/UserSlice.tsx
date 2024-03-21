@@ -6,7 +6,7 @@ export interface Forminputs {
   password: string;
   confirmpassword: string;
 }
-interface UserState {
+export interface UserState {
   Users: Forminputs[];
   loading: boolean;
   error: string | null;
