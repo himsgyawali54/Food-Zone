@@ -12,7 +12,7 @@ export interface RegisterFormInputs {
   password: string;
   terms: boolean;
 }
-interface RForm {
+export interface RForm {
   user: RegisterFormInputs;
 }
 const initialState: RForm = {

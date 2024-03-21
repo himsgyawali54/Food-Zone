@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
+import { RForm } from "../feature/RegisterSlice";
 import jwt from "jsonwebtoken";
 
 const LoginForm = () => {
@@ -17,7 +18,9 @@ const LoginForm = () => {
   //isLoading: boolean that indicates whether the mutation is in progress.
   //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
 
-  const registerUser = useSelector((state: any) => state.register);
+  // const registerUser = useSelector(
+  //   (state: { register: RForm }) => state.register
+  // );
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
