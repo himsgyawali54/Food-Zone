@@ -12,10 +12,8 @@ function App() {
         <Routes>
           <Route path="/" element={<LoginForm />} />
           <Route path="/register" element={<RegisterForm />} />
-
-          <Route element={<PrivateRoute />}>
-            <Route path="/mainpage" element={<Mainpage />} />
-          </Route>
+          <Route path="/mainpage" element={<Mainpage />} />
+          <Route element={<PrivateRoute />}></Route>
         </Routes>
       </Router>
     </>

@@ -53,6 +53,9 @@ const LoginForm = () => {
           //   "your-secret-key"
           // );
           // localStorage.setItem("token", token);
+          const token = generateToken(matchedUser.username);
+          // Store token in local storage
+          localStorage.setItem("token", token);
           dispatch(setUser([data]));
 
           setToogleVisibility(false);
@@ -67,9 +70,9 @@ const LoginForm = () => {
           }, 1000);
         } else {
           toast.error("Inavlid Username and password", { autoClose: 2000 });
-          // setTimeout(() => {
-          //   reset();
-          // }, 2000);
+          setTimeout(() => {
+            reset();
+          }, 2000);
         }
       } else {
         // No registered users in local storage
@@ -78,6 +81,22 @@ const LoginForm = () => {
     } catch (error) {
       dispatch(setError("Something Went Wromng"));
     }
+  };
+  // Function to generate JWT token
+  const generateToken = (username: string) => {
+    // Your secret key
+    const secretKey = "opssecret";
+
+    // Payload for the token
+    const payload = {
+      username: username,
+    };
+
+    // Generate the token
+    const token = jwt.sign(payload, secretKey, { expiresIn: "1h" });
+
+    // Return the generated token
+    return token;
   };
 
   const passwordVisibility = () => {
