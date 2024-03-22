@@ -7,7 +7,7 @@ export const fooditemsApi = createApi({
   endpoints: (builder) => ({
     getFoodItems: builder.query({
       query: () => "foodItems",
-    }), 
+    }),
   }),
 });
 
