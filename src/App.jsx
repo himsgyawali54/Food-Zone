@@ -1,8 +1,9 @@
-import { Suspense } from "react";
-import PrivateRoute from "./PrivateRoute";
-import Mainpage from "./MainView/MainPage";
-import LoginForm from "./Login/LoginForm";
-import RegisterForm from "./Register/RegisterForm";
+import { Suspense, lazy } from "react";
+
+const LoginForm = lazy(() => import("./Login/LoginForm"));
+const RegisterForm = lazy(() => import("./Register/RegisterForm"));
+const PrivateRoute = lazy(() => import("./PrivateRoute"));
+const Mainpage = lazy(() => import("./MainView/MainPage"));
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
