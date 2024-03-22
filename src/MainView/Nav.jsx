@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useGetFoodItemsQuery } from "../Api/api";
+import { useGetFoodItemsQuery } from "../Api/Api";
 import { useAppDispatch } from "../Hook";
 import { setFoodItems } from "../feature/AppReducer";
 import { useNavigate } from "react-router-dom";

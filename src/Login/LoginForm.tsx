@@ -2,10 +2,8 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
-
 import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
-import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../Hook";
@@ -46,12 +44,12 @@ const LoginForm = () => {
         );
 
         if (matchedUser) {
+          // const jwt = require("jsonwebtoken");
           // const token = jwt.sign(
           //   { username: matchedUser.username },
-          //   "your-secret-key"
+          //   "shhhhhhh"
           // );
           // localStorage.setItem("token", token);
-
           dispatch(setUser([data]));
 
           setToogleVisibility(false);
