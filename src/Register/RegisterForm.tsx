@@ -3,7 +3,7 @@ import TextInput from "../TextInput";
 import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../Hook";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useCreateUserMutation } from "../Api/UserApi";
 import { Link, useNavigate } from "react-router-dom";
@@ -13,7 +13,7 @@ const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [createUser, { isLoading }] = useCreateUserMutation();
   const [gender, setGender] = useState("");
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const {
     register,

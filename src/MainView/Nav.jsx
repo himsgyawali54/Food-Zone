@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useGetFoodItemsQuery } from "../Api/api";
-import { useDispatch } from "react-redux";
+import { useAppDispatch } from "../Hook";
 import { setFoodItems } from "../feature/AppReducer";
 import { useNavigate } from "react-router-dom";
 const Nav = () => {
@@ -8,7 +8,7 @@ const Nav = () => {
 
   const [searchquery, setSearchQuery] = useState("");
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const handleSearch = (e) => {
     const query = e.target.value;
     setSearchQuery(query);

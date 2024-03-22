@@ -2,13 +2,13 @@ import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { Forminputs } from "../feature/UserSlice";
-import { useDispatch, useSelector } from "react-redux";
+
 import { setUser, setLoading, setError } from "../feature/UserSlice";
 import { useNavigate } from "react-router-dom";
 import { setRegisterUser } from "../feature/RegisterSlice";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
-import { RForm } from "../feature/RegisterSlice";
+import { useAppDispatch } from "../Hook";
 import jwt from "jsonwebtoken";
 
 const LoginForm = () => {
@@ -18,11 +18,7 @@ const LoginForm = () => {
   //isLoading: boolean that indicates whether the mutation is in progress.
   //createUser(can be any name): calling this function will initiate the process of creating a new user(i.e initiate the mutation here createUser mutation).
 
-  // const registerUser = useSelector(
-  //   (state: { register: RForm }) => state.register
-  // );
-
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
   const {

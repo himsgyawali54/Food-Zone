@@ -1,10 +1,9 @@
-import { useSelector } from "react-redux";
 import { Navigate, Outlet } from "react-router-dom";
-import { UserState } from "./feature/UserSlice";
+import { useAppSelector } from "./Hook";
 
 const PrivateRoute = () => {
-  const isAuthenticated = useSelector(
-    (state: { userAuth: UserState }) => state.userAuth.isAuthenticated
+  const isAuthenticated = useAppSelector(
+    (state) => state.loginUser.isAuthenticated
   );
 
   console.log(isAuthenticated);
