@@ -1,10 +1,10 @@
 import { Suspense, lazy } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const LoginForm = lazy(() => import("./Login/LoginForm"));
 const RegisterForm = lazy(() => import("./Register/RegisterForm"));
 const PrivateRoute = lazy(() => import("./PrivateRoute"));
 const Mainpage = lazy(() => import("./MainView/MainPage"));
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 function App() {
   return (

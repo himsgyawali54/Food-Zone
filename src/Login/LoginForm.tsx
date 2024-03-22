@@ -44,7 +44,6 @@ const LoginForm = () => {
         );
 
         if (matchedUser) {
-          // const jwt = require("jsonwebtoken");
           // const token = jwt.sign(
           //   { username: matchedUser.username },
           //   "shhhhhhh"
