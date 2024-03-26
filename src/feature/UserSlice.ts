@@ -39,6 +39,9 @@ export const userAuthSlice = createSlice({
       state.loading = false;
       state.isAuthenticated = false;
     },
+    // logout: (state) => {
+    //   state.isAuthenticated = false;
+    // },
   },
 });
 export const { setUser, setLoading, setError } = userAuthSlice.actions;
