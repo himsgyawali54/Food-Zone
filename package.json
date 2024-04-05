@@ -12,7 +12,7 @@
   "dependencies": {
     "@browsery/util": "^0.12.5",
     "@hookform/resolvers": "^3.3.4",
-    "@reduxjs/toolkit": "^2.0.1",
+    "@reduxjs/toolkit": "^2.2.3",
     "axios": "^1.6.3",
     "buffer": "^6.0.3",
     "json-server": "^0.17.4",
