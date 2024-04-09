@@ -5,13 +5,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
 import { useAppDispatch } from "../Hook";
 import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
-import { useCreateUserMutation } from "../Api/UserApi";
+import { useRegisterMutation } from "../feature/authApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
-  const [createUser, { isLoading }] = useCreateUserMutation();
+  const [createUser, { isLoading }] = useRegisterMutation();
   const [gender, setGender] = useState("");
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
@@ -91,12 +91,7 @@ const RegisterForm = () => {
                     error={errors.lastName?.message}
                     {...register("lastName")}
                   />
-                  <TextInput
-                    type="text"
-                    placeholder="Username"
-                    error={errors.username?.message}
-                    {...register("username")}
-                  />
+
                   <TextInput
                     type="email"
                     placeholder="Email Address"
