@@ -7,7 +7,6 @@ import { useNavigate } from "react-router-dom";
 import { RegisterFormInputs } from "../feature/RegisterSlice";
 import { toast } from "react-toastify";
 import { useAppDispatch } from "../Hook";
-import jwt from "jsonwebtoken";
 
 const LoginForm = () => {
   const [toogleVisibility, setToogleVisibility] = useState(false);
@@ -39,8 +38,7 @@ const LoginForm = () => {
 
         // Find the user with matching username and password
         const matchedUser = registeredUsers.find(
-          (user) =>
-            user.username === data.username && user.password === data.password
+          (user) => user.email === data.email && user.password === data.password
         );
 
         if (matchedUser) {
@@ -94,17 +92,18 @@ const LoginForm = () => {
             <form onSubmit={handleSubmit(onSubmit)}>
               <div>
                 <div className="mb-4 flex flex-col">
-                  <h3 className="text-3xl pb-5 font-semibold">Login</h3>
+                  <h3 className="text-3xl  font-semibold">Login</h3>
                 </div>
+                <div className="border-b mb-6 border-slate-100 w-5"></div>
                 <div className="mb-4 flex flex-col">
-                  <label htmlFor="username">UserName</label>
+                  <label htmlFor="email">Email</label>
 
                   <input
-                    id="username"
-                    {...register("username", { required: true })}
+                    id="email"
+                    {...register("email", { required: true })}
                     className="border rounded w-10/12 py-2 px-3"
                   />
-                  {errors.username && <span>This Field Is required</span>}
+                  {errors.email && <span>This Field Is required</span>}
                 </div>
 
                 <div className="mb-4 flex flex-col relative">
@@ -130,52 +129,21 @@ const LoginForm = () => {
                   )}
                   {errors.password && <span>This Field Is required</span>}
                 </div>
-                <div className="mb-4 flex flex-col relative">
-                  <label htmlFor="confirmpassword">Confirm Password</label>
-                  <input
-                    id="confirmpassword"
-                    {...register("confirmpassword", {
-                      required: true,
-                      validate: (val: string) => {
-                        if (watch("password") != val) {
-                          return "Your passwords do no match";
-                        }
-                      },
-                    })}
-                    className="border rounded w-10/12 py-2 px-3"
-                    type={toogleCPVisibility ? "text" : "password"}
-                  />
-                  {toogleCPVisibility ? (
-                    <FaRegEye
-                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
-                      onClick={cpasswordVisibility}
-                    />
-                  ) : (
-                    <FaRegEyeSlash
-                      className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
-                      onClick={cpasswordVisibility}
-                    />
-                  )}
-                  {errors.confirmpassword && (
-                    <span>The passwords do not match</span>
-                  )}
-                </div>
-                <div className="flex gap-4 items-center">
-                  <button
-                    type="submit"
-                    className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
+
+                <button
+                  type="submit"
+                  className="bg-blue-900 text-white py-2 px-4 rounded-md mt-2"
+                >
+                  Submit
+                </button>
+                <div className="pt-6">
+                  Don't have an account?
+                  <span
+                    className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
+                    onClick={handleRegister}
                   >
-                    Submit
-                  </button>
-                  <div>
-                    Don't have an account?
-                    <span
-                      className="text-blue-900 font-semibold cursor-pointer  ps-2 decoration-solid"
-                      onClick={handleRegister}
-                    >
-                      Register
-                    </span>
-                  </div>
+                    Register
+                  </span>
                 </div>
               </div>
             </form>
