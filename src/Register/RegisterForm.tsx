@@ -70,9 +70,12 @@ const RegisterForm = () => {
         <div>
           <img src="img/signup-img.jpg" alt="" className="h-full" />
         </div>
-        <div className="bg-white  py-3 px-4 md:px-7 lg:px-20 shadow-lg">
+        <div className="bg-white py-3 px-4 md:px-7 lg:px-20 ">
           <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
-          <form onSubmit={handleSubmit(onsubmit)}>
+          <form
+            onSubmit={handleSubmit(onsubmit)}
+            className="border px-10 py-5 mt-5 rounded-lg"
+          >
             {isLoading ? (
               "Creating User.."
             ) : (
@@ -91,16 +94,15 @@ const RegisterForm = () => {
                     error={errors.lastName?.message}
                     {...register("lastName")}
                   />
+                </div>
 
+                <div className="mt-2 flex flex-col gap-3">
                   <TextInput
                     type="email"
                     placeholder="example@email.com"
                     error={errors.email?.message}
                     {...register("email")}
                   />
-                </div>
-                <div className="flex items-center gap-5 py-2 ml-1"></div>
-                <div className="mt-3 flex flex-col ">
                   <TextInput
                     id="password"
                     placeholder="Password"
@@ -108,13 +110,12 @@ const RegisterForm = () => {
                     {...register("password")}
                   />
                   <TextInput
-                    label="Confirm Password"
                     placeholder="Confirm Password"
                     error={errors.confirmPassword?.message}
                     {...register("confirmPassword")}
                   />
 
-                  <div className="my-2 ml-1">
+                  <div className=" ml-1">
                     <input
                       type="checkbox"
                       {...register("terms")}
