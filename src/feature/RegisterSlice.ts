@@ -4,12 +4,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export interface RegisterFormInputs {
   firstName: string;
   lastName: string;
-  username: string;
+
   email: string;
-  gender?: string | null;
-  phonenumber?: string | null;
-  address?: string | null;
+
   password: string;
+  confirmPassword: string;
   terms: boolean;
 }
 export interface RForm {
@@ -19,12 +18,9 @@ const initialState: RForm = {
   user: {
     firstName: "",
     lastName: "",
-    username: "",
     email: "",
-    gender: "",
-    phonenumber: "",
-    address: "",
     password: "",
+    confirmPassword: "",
     terms: false,
   },
 };

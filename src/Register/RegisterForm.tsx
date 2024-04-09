@@ -12,7 +12,7 @@ import { toast } from "react-toastify";
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [createUser, { isLoading }] = useRegisterMutation();
-  const [gender, setGender] = useState("");
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const {
@@ -94,58 +94,24 @@ const RegisterForm = () => {
 
                   <TextInput
                     type="email"
-                    placeholder="Email Address"
+                    placeholder="example@email.com"
                     error={errors.email?.message}
                     {...register("email")}
                   />
                 </div>
-                <div className="flex items-center gap-5 py-2 ml-1">
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="male"
-                      className="cursor-pointer mr-2 "
-                      {...register("gender")}
-                      value="male"
-                      checked={gender === "male"}
-                      onChange={() => setGender("male")}
-                    />
-                    <label htmlFor="male" className="text-gray-600">
-                      Male
-                    </label>
-                  </div>
-                  <div>
-                    <input
-                      type="checkbox"
-                      id="female"
-                      className="cursor-pointer mr-2"
-                      {...register("gender")}
-                      value="female"
-                      checked={gender === "female"}
-                      onChange={() => setGender("female")}
-                    />
-                    <label htmlFor="female" className="text-gray-600">
-                      Female
-                    </label>
-                  </div>
-                </div>
+                <div className="flex items-center gap-5 py-2 ml-1"></div>
                 <div className="mt-3 flex flex-col ">
-                  <TextInput
-                    type="number"
-                    placeholder="Phone Number"
-                    {...register("phonenumber")}
-                  />
-                  <TextInput
-                    type="text"
-                    placeholder="Address"
-                    error={errors.firstName?.message}
-                    {...register("address")}
-                  />
                   <TextInput
                     id="password"
                     placeholder="Password"
                     error={errors.password?.message}
                     {...register("password")}
+                  />
+                  <TextInput
+                    label="Confirm Password"
+                    placeholder="Confirm Password"
+                    error={errors.confirmPassword?.message}
+                    {...register("confirmPassword")}
                   />
 
                   <div className="my-2 ml-1">
