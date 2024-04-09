@@ -1,7 +1,7 @@
 import { configureStore, combineReducers } from "@reduxjs/toolkit";
 // import { fooditemsApi } from "../Api/Api";
 import foodItemsReducer from "../feature/AppReducer";
-import { userAuthApi } from "../Api/UserApi";
+import { userApi } from "../Api/UserApi";
 import loginuserReducer from "../feature/UserSlice";
 import registerReducer from "../feature/RegisterSlice";
 
@@ -10,7 +10,7 @@ const rootReducer = combineReducers({
   loginUser: loginuserReducer,
   register: registerReducer,
   // [fooditemsApi.reducerPath]: fooditemsApi.reducer,
-  [userAuthApi.reducerPath]: userAuthApi.reducer,
+  [userApi.reducerPath]: userApi.reducer,
 });
 
 export const store = configureStore({
@@ -18,7 +18,7 @@ export const store = configureStore({
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat(
       // fooditemsApi.middleware,
-      userAuthApi.middleware
+      userApi.middleware
     ),
 });
 export type RootState = ReturnType<typeof store.getState>;

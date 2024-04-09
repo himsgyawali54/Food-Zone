@@ -1,30 +1,14 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { GET_USER_INFO } from "../constants/endpoint";
+// import { AuthInfoResponse } from "utils/types/api-response";
+// Slice
+import { apiSlice } from "./Api";
 
-// Helper function to get the stored token
-const getToken = () => localStorage.getItem("token");
-
-export const userAuthApi = createApi({
-  reducerPath: "userAuthApi",
-  baseQuery: fetchBaseQuery({
-    baseUrl: "http://localhost:3001/",
-    prepareHeaders: (headers) => {
-      // Add authorization header with JWT token if available
-      const token = getToken();
-      if (token) {
-        headers.set("Authorization", `Bearer ${token}`);
-      }
-      return headers;
-    },
-  }),
+export const userApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    createUser: builder.mutation({
-      query: (newUser) => ({
-        url: "users",
-        method: "POST",
-        body: newUser,
-      }),
+    getMe: builder.query({
+      query: () => GET_USER_INFO,
+      providesTags: ["userInfo"],
     }),
   }),
 });
-
-export const { useCreateUserMutation } = userAuthApi;
+export const { useGetMeQuery } = userApi;
