@@ -1,6 +1,7 @@
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
 import { twMerge } from "tailwind-merge";
+import { classNames } from "../../utils";
 type PasswordInputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   error?: string;
