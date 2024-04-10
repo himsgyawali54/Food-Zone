@@ -1,5 +1,5 @@
 import { SubmitHandler, useForm } from "react-hook-form";
-import TextInput from "../TextInput";
+import TextInput from "../component/forms/TextInput";
 import { registrationSchema } from "./validation";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useState } from "react";
@@ -84,20 +84,20 @@ const RegisterForm = () => {
                 <div className="grid grid-cols-2 gap-x-8 mt-2">
                   <TextInput
                     type="text"
-                    placeholder="First Name"
+                    placeholder="first name"
                     error={errors.firstName?.message}
                     {...register("firstName")}
                   />
 
                   <TextInput
                     type="text"
-                    placeholder="Last Name"
+                    placeholder="last name"
                     error={errors.lastName?.message}
                     {...register("lastName")}
                   />
                 </div>
 
-                <div className="mt-2 flex flex-col gap-3">
+                <div className="mt-2 flex flex-col gap-5">
                   <TextInput
                     type="email"
                     placeholder="example@email.com"
@@ -106,12 +106,12 @@ const RegisterForm = () => {
                   />
                   <PasswordInput
                     id="password"
-                    placeholder="Password"
+                    placeholder="password"
                     error={errors.password?.message}
                     {...register("password")}
                   />
                   <PasswordInput
-                    placeholder="Confirm Password"
+                    placeholder="confirm password"
                     error={errors.confirmPassword?.message}
                     {...register("confirmPassword")}
                   />

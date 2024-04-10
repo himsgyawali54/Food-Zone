@@ -1,12 +1,14 @@
 import { forwardRef, useState, type InputHTMLAttributes } from "react";
 import { FaRegEye, FaRegEyeSlash } from "react-icons/fa";
+import { twMerge } from "tailwind-merge";
 type PasswordInputProps = InputHTMLAttributes<HTMLInputElement> & {
   label?: string;
   error?: string;
+  extraClass?: string;
 };
 
 const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
-  ({ id, label, error, ...rest }, ref) => {
+  ({ id, label, error, extraClass, ...rest }, ref) => {
     const [toogleVisibility, setToogleVisibility] = useState(false);
     const togglePassword = () => {
       setToogleVisibility(!toogleVisibility);
@@ -14,25 +16,29 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
 
     return (
       <>
-        <label className="text-mediumText">{label}</label>
-        <div className="mt-3 flex relative">
+        {/* <label className="text-mediumText">{label}</label> */}
+        <div className=" flex relative">
           <input
             id={id}
             ref={ref}
-            className={`w-full rounded-lg border border-input px-3.5 py-2.5 text-gray-600 outline-none placeholder:text-smallText focus:border-primary focus:shadow-input focus:outline-none ${
-              error != null ? "border-red-600" : "border-input"
-            }`}
+            className={twMerge(
+              classNames(
+                "w-full rounded-lg border border-input px-3.5 py-2.5 text-gray-600 outline-none placeholder:text-lg focus:border-primary focus:shadow-input focus:outline-none",
+                error != null ? "border-red-600" : "border-input"
+              ),
+              extraClass
+            )}
             type={toogleVisibility ? "text" : "password"}
             {...rest}
           />
           {toogleVisibility ? (
             <FaRegEye
-              className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
+              className="absolute top-3 right-16 md:right-32 lg:right-10 text-lg cursor-pointer"
               onClick={togglePassword}
             />
           ) : (
             <FaRegEyeSlash
-              className="absolute top-12 right-16 md:right-32 lg:right-24 text-xl cursor-pointer"
+              className="absolute top-3 right-16 md:right-32 lg:right-10 text-lg cursor-pointer"
               onClick={togglePassword}
             />
           )}
