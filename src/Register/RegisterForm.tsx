@@ -105,6 +105,7 @@ const RegisterForm = () => {
                     {...register("email")}
                   />
                   <PasswordInput
+                    extraClass="mb-3"
                     id="password"
                     placeholder="password"
                     error={errors.password?.message}

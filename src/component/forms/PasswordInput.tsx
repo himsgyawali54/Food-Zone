@@ -24,7 +24,7 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
             ref={ref}
             className={twMerge(
               classNames(
-                "w-full rounded-lg border border-input px-3.5 py-2.5 text-gray-600 outline-none placeholder:text-lg focus:border-primary focus:shadow-input focus:outline-none",
+                " w-full rounded-lg border border-input px-3.5 py-2.5 text-gray-600 outline-none placeholder:text-lg focus:border-primary focus:shadow-input focus:outline-none",
                 error != null ? "border-red-600" : "border-input"
               ),
               extraClass
