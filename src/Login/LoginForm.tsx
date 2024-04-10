@@ -77,9 +77,7 @@ const LoginForm = () => {
   const passwordVisibility = () => {
     setToogleVisibility(!toogleVisibility);
   };
-  const cpasswordVisibility = () => {
-    setToogleCPVisibility(!toogleCPVisibility);
-  };
+
   const handleRegister = () => navigate("/register");
   return (
     <>

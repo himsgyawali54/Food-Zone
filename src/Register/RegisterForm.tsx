@@ -8,6 +8,7 @@ import { RegisterFormInputs, setRegisterUser } from "../feature/RegisterSlice";
 import { useRegisterMutation } from "../feature/authApiSlice";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+import PasswordInput from "../component/forms/PasswordInput";
 
 const RegisterForm = () => {
   const [isChecked, setIsChecked] = useState(false);
@@ -66,11 +67,11 @@ const RegisterForm = () => {
   };
   return (
     <>
-      <div className="grid grid-cols-1 md:grid-cols-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 ">
         <div>
-          <img src="img/signup-img.jpg" alt="" className="h-full" />
+          <img src="img/register.jpg" alt="" className="h-full fixed  w-1/2" />
         </div>
-        <div className="bg-white py-3 px-4 md:px-7 lg:px-20 ">
+        <div className="bg-white py-3 px-4 md:px-7 lg:px-20 overflow-y-auto">
           <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
           <form
             onSubmit={handleSubmit(onsubmit)}
@@ -103,7 +104,7 @@ const RegisterForm = () => {
                     error={errors.email?.message}
                     {...register("email")}
                   />
-                  <TextInput
+                  <PasswordInput
                     id="password"
                     placeholder="Password"
                     error={errors.password?.message}
