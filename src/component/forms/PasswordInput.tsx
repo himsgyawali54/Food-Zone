@@ -17,6 +17,8 @@ const PasswordInput = forwardRef<HTMLInputElement, PasswordInputProps>(
         <label className="text-mediumText">{label}</label>
         <div className="mt-3 flex relative">
           <input
+            id={id}
+            ref={ref}
             className={`w-full rounded-lg border border-input px-3.5 py-2.5 text-gray-600 outline-none placeholder:text-smallText focus:border-primary focus:shadow-input focus:outline-none ${
               error != null ? "border-red-600" : "border-input"
             }`}

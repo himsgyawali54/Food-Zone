@@ -110,7 +110,7 @@ const RegisterForm = () => {
                     error={errors.password?.message}
                     {...register("password")}
                   />
-                  <TextInput
+                  <PasswordInput
                     placeholder="Confirm Password"
                     error={errors.confirmPassword?.message}
                     {...register("confirmPassword")}
