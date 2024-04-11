@@ -14,6 +14,7 @@ const OtpForm = () => {
         {inputRefs.map((inputRefs, index) => (
           <TextInput
             extraClass="h-16 w-16 rounded-[10px] border border-[#777777] p-3 text-[#474747] text-center text-xl font-semibold outline-none"
+            maxLength={1}
             autoComplete="off"
             required
           />
