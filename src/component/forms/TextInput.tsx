@@ -6,6 +6,7 @@ interface TextInputProps extends InputHTMLAttributes<HTMLInputElement> {
   placeholder?: string;
   error?: string;
   disableFocusStyles?: boolean;
+  extraClass?: string;
 }
 
 const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
@@ -16,6 +17,7 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
       placeholder,
       error,
       disableFocusStyles,
+      extraClass,
 
       ...props
     },
@@ -33,7 +35,8 @@ const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
           className={twMerge(
             "mt-3 w-full block rounded-lg border border-input px-3 py-2 placeholder:text-smallText focus:outline-0",
             error != null ? "border-red-600" : "border-input",
-            !disableFocusStyles && "focus:border-primary focus:shadow-input "
+            !disableFocusStyles && "focus:border-primary focus:shadow-input ",
+            extraClass
           )}
         />
 
