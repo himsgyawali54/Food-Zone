@@ -5,6 +5,7 @@ const LoginForm = lazy(() => import("./Login/LoginForm"));
 const RegisterForm = lazy(() => import("./Register/RegisterForm"));
 const PrivateRoute = lazy(() => import("./PrivateRoute"));
 const Mainpage = lazy(() => import("./MainView/MainPage"));
+const EmailVerification = lazy(() => import("./Register/EmailVerification"));
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Routes>
             <Route path="/" element={<LoginForm />} />
             <Route path="/register" element={<RegisterForm />} />
+            <Route path="/emailverification" element={<EmailVerification />} />
 
             <Route element={<PrivateRoute />}>
               <Route path="/mainpage" element={<Mainpage />} />

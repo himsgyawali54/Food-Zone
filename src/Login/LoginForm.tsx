@@ -73,7 +73,7 @@ const LoginForm = () => {
     setToogleVisibility(!toogleVisibility);
   };
 
-  const handleRegister = () => navigate("/register");
+  const handleRegister = () => navigate("/emailverification");
   return (
     <>
       <div className="flex bg-slate-100 items-center h-screen">

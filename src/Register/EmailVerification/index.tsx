@@ -1,5 +1,11 @@
+import EmailVerifyHeader from "../../molecules/EmailVerifyHeader";
+
 const EmailVerification = () => {
-  return <div>index</div>;
+  return (
+    <div>
+      <EmailVerifyHeader />
+    </div>
+  );
 };
 
 export default EmailVerification;
