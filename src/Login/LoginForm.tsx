@@ -42,11 +42,6 @@ const LoginForm = () => {
         );
 
         if (matchedUser) {
-          // const token = jwt.sign(
-          //   { username: matchedUser.username },
-          //   "shhhhhhh"
-          // );
-          // localStorage.setItem("token", token);
           dispatch(setUser([data]));
 
           setToogleVisibility(false);

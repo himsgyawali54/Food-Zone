@@ -30,28 +30,6 @@ const RegisterForm = () => {
       const response = await createUser(data).unwrap(); //unwrap:Give me the result of this Promise, not the Promise itself."
       dispatch(setRegisterUser(response));
 
-      const storedUserData = localStorage.getItem("userData");
-
-      if (storedUserData) {
-        try {
-          let existingData = JSON.parse(storedUserData);
-          // If existingData is not an array, convert it to an array
-          if (!Array.isArray(existingData)) {
-            existingData = [existingData];
-          }
-          const updatedData = [...existingData, response];
-          localStorage.setItem("userData", JSON.stringify(updatedData));
-        } catch (error) {
-          console.error(
-            "Error parsing or updating user data in local storage:",
-            error
-          );
-        }
-      } else {
-        // If no data exists in local storage, initialize it with an array containing the current user's data
-        localStorage.setItem("userData", JSON.stringify([response]));
-      }
-
       setTimeout(() => {
         navigate("/");
       }, 1500);
@@ -72,7 +50,9 @@ const RegisterForm = () => {
           <img src="img/register.jpg" alt="" className="h-full fixed  w-1/2" />
         </div>
         <div className="bg-white py-3 px-4 md:px-7 lg:px-20 overflow-y-auto">
-          <h3 className="font-medium text-3xl pb-2">User Registration Form</h3>
+          <h3 className="font-medium text-3xl pb-2 lg:pl-14">
+            User Registration Form
+          </h3>
           <form
             onSubmit={handleSubmit(onsubmit)}
             className="border px-10 py-5 mt-5 rounded-lg"
