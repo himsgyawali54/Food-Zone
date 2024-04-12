@@ -8,6 +8,10 @@ const OtpForm = () => {
     useRef<HTMLInputElement>(null),
     useRef<HTMLInputElement>(null),
   ];
+  const handleKeyUp = (
+    event: React.KeyboardEvent<HTMLInputElement>,
+    index: number
+  ) => {};
   return (
     <form>
       <div className="mt-5 flex w-full justify-evenly gap-5">
@@ -15,6 +19,9 @@ const OtpForm = () => {
           <TextInput
             extraClass="h-16 w-16 rounded-[10px] border border-[#777777] p-3 text-[#474747] text-center text-xl font-semibold outline-none"
             maxLength={1}
+            onKeyUp={(event) => {
+              handleKeyUp(event, index);
+            }}
             autoComplete="off"
             required
           />
